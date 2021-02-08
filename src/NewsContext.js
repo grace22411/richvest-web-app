@@ -9,7 +9,7 @@ export const NewContextProvider = (props) => {
     
 
     useEffect(() => {
-        axios.get(`http://newsapi.org/v2/everything?q=tesla&from=2021-02-06&sortBy=publishedAt&apiKey=${apiKey}`
+        axios.get(`https://newsapi.org/v2/everything?q=tesla&from=2021-02-06&sortBy=publishedAt&apiKey=${apiKey}`
         ).then((response => setData(response.data))).catch((error) => console.log(error))
 
     },[data])
