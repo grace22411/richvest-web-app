@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Head, HeadWrap, VerificationCode } from "./GlobalCss";
+import { VerificationCode } from "./GlobalCss";
 import { Link } from 'react-router-dom';
 import OtpInput from "react-otp-input";
+import Header from "./Header";
 
 function EmailVerification() {
   const [otp, setOtp] = useState('');
@@ -11,9 +12,7 @@ function EmailVerification() {
   };
   return (
     <>
-      <HeadWrap>
-        <Head></Head>
-      </HeadWrap>
+      <Header />
 
       <VerificationCode>
         <h3>Check your email</h3>

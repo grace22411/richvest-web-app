@@ -3,6 +3,8 @@ import { Head, HeadWrap, Form, Container } from "./GlobalCss";
 import {Link, Redirect} from 'react-router-dom';
 import useForm from "./useForm"
 import validate from "./validationInfo"
+import loginImage from "../Dashboard/images/Login.png"
+import Header from "./Header";
 
 function Login({submitForm}) {
   const [password, setPassword] = useState("");
@@ -14,12 +16,12 @@ function Login({submitForm}) {
 
   return (
     <div>
-      <HeadWrap>
-        <Head></Head>
-      </HeadWrap>
+      <Header />
       <Container className="container">
         <div className="row">
-          <div className="col-md-7"></div>
+          <div className="col-md-7">
+              <img src={loginImage} alt="A lady typing" />
+          </div>
           <div className="col-md-5">
             <Form onSubmit={handleSubmit}>
               <h3>Glad you are back! </h3>
@@ -47,10 +49,10 @@ function Login({submitForm}) {
                   onChange={handleChange}
                 />
                 {errors.password && <p style={{color:"red", fontSize:"11px", fontWeight:500}}>{errors.password}</p>}
-                <p><Link to="/verifyEmail">Forgot Password?</Link></p>
+                <p><Link to="/emailverification">Forgot Password?</Link></p>
               </div>
               <Link to="/dashboard"><button className="btn">Sign In</button></Link>
-              <p>New to Richvest 360? <Link to="/signup">Sign up</Link></p>
+              <p style={{marginTop:"15px"}}>New to Richvest 360? <Link to="/signup">Sign up</Link></p>
             </Form>
           </div>
         </div>

@@ -13,6 +13,8 @@ export const Head = styled.div`
   background-color: #fff;
   position:fixed !important;
   z-index:9999;
+  top:0;
+  left:0;
   padding:40px 100px;
   display:flex;
 `;

@@ -18,7 +18,7 @@ function SideBar() {
                 {/* <IoPersonOutline /> */}
                 <ImSwitch />
                 <ImSwitch />
-                <ImSwitch />
+               <Link to="/"><ImSwitch /></Link> 
             </HeadIcons>
             <Nav>
                 <NavItem><Link to="/dashboard"><img src={dashboard} alt="" />My Dashboard</Link></NavItem>

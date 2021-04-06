@@ -3,6 +3,8 @@ import { Head, HeadWrap, Form, Container , WelcomeImage} from "./GlobalCss";
 import {Link, Redirect} from 'react-router-dom';
 import useForm from "./useForm"
 import validate from "./validationInfo"
+import business from "../Dashboard/images/business.svg"
+import Header from "./Header";
 
 function SignUp({submitForm}) {
   const [password, setPassword] = useState("");
@@ -14,19 +16,19 @@ function SignUp({submitForm}) {
 
   return (
     <div>
-      <HeadWrap>
-        <Head></Head>
-      </HeadWrap>
+      <Header />
       <Container className="container-fluid">
         <div className="row">
           <div className="col-md-7 signup">
+              
                 <WelcomeImage>
-
+                <h2>Get started on <span>growing</span> your money the smart way!</h2>
+                <img src={business} alt="business analyst" />
                 </WelcomeImage>
           </div>
           <div className="col-md-5 signup-form">
             <Form onSubmit={handleSubmit}>
-              <h3>Sign Up </h3>
+              <h3>Sign Up! </h3>
               <div className="form-group">
                 <input
                   type="text"
@@ -78,7 +80,7 @@ function SignUp({submitForm}) {
                 
               </div>
               <button className="btn">Get Started</button>
-              <p>Already a member of Richvest 360? <Link to="/">Sign In</Link></p>
+              <p style={{marginTop:"15px"}}>Already a member of Richvest 360? <Link to="/">Sign In</Link></p>
             </Form>
           </div>
         </div>

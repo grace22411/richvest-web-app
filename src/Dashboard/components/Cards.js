@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from "styled-components"
+import wave from "../images/wave.png"
 
 
 const Card = styled.div`
@@ -7,6 +8,9 @@ const Card = styled.div`
    width:90%;
    border-radius:5px;
    margin-bottom:30px;
+   background-image:url(${wave});
+   background-size:cover;
+   background-position:bottom;
    padding:25px;
    color:#fff;
    h3{

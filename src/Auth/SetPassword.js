@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Head, HeadWrap, VerificationCode } from "./GlobalCss";
 import OtpInput from "react-otp-input";
+import Header from "../Dashboard/components/Header";
 
 function SetPassword() {
   const [otp, setOtp] = useState('');
@@ -11,9 +12,7 @@ function SetPassword() {
   };
   return (
     <div>
-      <HeadWrap>
-        <Head></Head>
-      </HeadWrap>
+     <Header />
 
       <VerificationCode>
         <h3>Set up your 4-digit Security pin</h3>

@@ -10,9 +10,17 @@ export const Head = styled.div`
   height: 150px;
   width: 100%;
   background-color: #fff;
-  position:fixed !important;
   z-index:9999;
+  filter:grayscale(0.1);
+  padding:40px 100px;
 `;
+
+export const Logo = styled.div`
+    img{
+        height:60px;
+        width:60px;
+    }
+`
 export const Form = styled.form`
   padding: 0 15px;
   margin-top:40px;
@@ -52,11 +60,20 @@ export const Form = styled.form`
 `;
 export const Container = styled.div`
   .row{
+    .col-md-7{
+      img{
+        width:70%;
+        margin-top:20px;
+      }
+    }
+    .col-md-5{
+      padding-top:50px;
+    }
      .signup{
         padding:0;
      }
      .signup-form{
-        padding-top:50px;
+       padding-top:20px;
         padding-right:100px;
      }
   }
@@ -64,9 +81,21 @@ export const Container = styled.div`
 export const WelcomeImage = styled.div`
     background-color:#0303ad;
     width:80%;
+    clip-path: polygon(0 2%, 100% 5.5%, 100% 100%, 0% 100%);
     margin-top:-50px;
-    height:600px;
+    height:650px;
     z-index:-9999;
+      padding: 100px 50px 50px 50px;
+    h2{
+      color:#fff;
+      span{
+        color:#F3AB04;
+      }
+    }
+    img{
+      margin-top:-100px;
+      width:85% !important;
+    }
 `;
 
 
