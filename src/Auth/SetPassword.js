@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Head, HeadWrap, VerificationCode } from "./GlobalCss";
 import OtpInput from "react-otp-input";
-import Header from "../Dashboard/components/Header";
+import Header from "../UserDashboard/components/Header";
 
 function SetPassword() {
   const [otp, setOtp] = useState('');

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Head, HeadWrap, Form, Container } from "./GlobalCss";
+import { Form, Container } from "./GlobalCss";
 import {Link, Redirect} from 'react-router-dom';
 import useForm from "./useForm"
 import validate from "./validationInfo"
-import loginImage from "../Dashboard/images/Login.png"
+import loginImage from "../UserDashboard/images/Login.png"
 import Header from "./Header";
 
 function Login({submitForm}) {

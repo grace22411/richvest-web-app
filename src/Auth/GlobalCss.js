@@ -2,17 +2,17 @@ import styled from "styled-components";
 
 export const HeadWrap = styled.div`
   filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.1));
-  height:150px;
+  height:120px;
  
 `;
 export const Head = styled.div`
   clip-path: polygon(0 0, 100% 0, 100% 77%, 81% 95%, 32% 89%, 0 84%);
-  height: 150px;
+  height: 120px;
   width: 100%;
   background-color: #fff;
   z-index:9999;
   filter:grayscale(0.1);
-  padding:40px 100px;
+  padding:20px 100px;
 `;
 
 export const Logo = styled.div`
@@ -32,10 +32,11 @@ export const Form = styled.form`
     font-size: 12px;
   }
   .form-group {
-   margin-bottom: 30px;
+   margin-bottom: 20px;
     input {
       background-color: #d8e1f8;
       border: none;
+      border-radius:10px;
       outline: none !important;
       ::placeholder {
         font-size: 11px;
@@ -56,14 +57,15 @@ export const Form = styled.form`
      width:100%;
      background-color:#0303ad;
      color:#fff;
+     border-radius:10px;
   }
 `;
 export const Container = styled.div`
   .row{
     .col-md-7{
       img{
-        width:70%;
-        margin-top:20px;
+        width:85%;
+        margin-top:40px;
       }
     }
     .col-md-5{
@@ -75,26 +77,30 @@ export const Container = styled.div`
      .signup-form{
        padding-top:20px;
         padding-right:100px;
+        h3{
+          font-size:15px;
+          margin-bottom:10px;
+        }
      }
   }
 `;
 export const WelcomeImage = styled.div`
-    background-color:#0303ad;
-    width:80%;
+    //background-color:#0303ad;
     clip-path: polygon(0 2%, 100% 5.5%, 100% 100%, 0% 100%);
-    margin-top:-50px;
-    height:650px;
+    height:auto;
     z-index:-9999;
-      padding: 100px 50px 50px 50px;
+    padding: 80px 100px;
     h2{
-      color:#fff;
+      color:#32427c;
+      font-size:25px;
       span{
         color:#F3AB04;
       }
     }
     img{
-      margin-top:-100px;
-      width:85% !important;
+      object-fit:contain;
+      width:100%;
+      height:100%;
     }
 `;
 
@@ -141,3 +147,4 @@ export const VerificationCode = styled.div`
         }
       }
 `
+

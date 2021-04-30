@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../Dashboard/images/logo.png"
+import logo from "../UserDashboard/images/logo.png"
 
 import { Link } from 'react-router-dom';
 import { Head, HeadWrap, Logo} from "./GlobalCss";
