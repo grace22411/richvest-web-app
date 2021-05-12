@@ -3,17 +3,13 @@ import Header from "../components/Header";
 import { ReferAndEarn, ReferralDetails } from "../components/RefferalComponents/Tabs";
 import SideBar from "../components/SideBar";
 import { Tabs } from "antd";
-import { DashboardContainer, TabContainer } from "../styles/PageStyles";
+import { DashboardContainer, TabContainer , ReferralContainer} from "../styles/PageStyles";
 
 function Refferal() {
     const { TabPane } = Tabs;
   
     function callback(key) {
       console.log(key);
-    }
-
-   const style = {
-      width:"80%"
     }
   return (
     <div>
@@ -26,7 +22,7 @@ function Refferal() {
           <div className="col-md-9">
           <h3>Referrals</h3>
           <TabContainer className="container">
-            <div style={style}>
+            <ReferralContainer>
               <Tabs defaultActiveKey="1" onChange={callback}>
                 <TabPane tab="Referral Details" key="1">
                   <ReferralDetails />
@@ -35,7 +31,7 @@ function Refferal() {
                   <ReferAndEarn />
                 </TabPane>
               </Tabs>
-              </div>
+              </ReferralContainer >
             </TabContainer>
 
           </div>

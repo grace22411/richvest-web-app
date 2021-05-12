@@ -13,7 +13,7 @@ import { FaFacebook, FaWhatsapp, FaTwitter } from "react-icons/fa";
 const ReferImage = styled.img`
   object-fit: cover;
   width: 100%;
-  height: 100%;
+  height: 90%;
 `;
 const DashboardBits = styled.div`
   padding: 20px;
@@ -21,10 +21,15 @@ const DashboardBits = styled.div`
   border: 1px solid #5783e651;
   .row {
     .col-md-4 {
-      text-align:color-interpolation-filters;
+      text-align:center;
       .image {
         width: 200px;
-        height: 200px;
+        height: 250px;
+        text-align:center;
+        svg{
+          margin:20px 10px;
+          size:30px;
+        }
       }
     }
   }
@@ -46,14 +51,14 @@ function MainDashboard() {
                 <div className="col-md-8 ">
                   <DashboardBits>
                     <div className="row">
-                      <div className="col-md-6">
+                      <div className="col-md-6 col-6">
                         <DashboardCard
                           title="My Wallet"
                           color="#4800ff"
                           value="0.00"
                         />
                       </div>
-                      <div className="col-md-6">
+                      <div className="col-md-6 col-6">
                         <DashboardCard
                           title="My Investments"
                           color="#19d0e6"
@@ -61,14 +66,14 @@ function MainDashboard() {
                         />
                       </div>
 
-                      <div className="col-md-6">
+                      <div className="col-md-6 col-6">
                         <DashboardCard
                           title="My Savings"
                           color="#1f2cac"
                           value="0.00"
                         />
                       </div>
-                      <div className="col-md-6">
+                      <div className="col-md-6 col-6">
                         <DashboardCard
                           title="My Loan"
                           color="#1051FF"

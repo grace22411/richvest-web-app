@@ -14,11 +14,7 @@ export const ReferralDetails = () => {
 }
 
 export const ReferAndEarn = () => {
-    const style = {
-        borderRadius:"100%",
-        color:"#fff",
-        padding:"5px"
-      }
+    
     return (
         <ReferTabTwo>
             <img src={refer} alt="referral Illustration" />

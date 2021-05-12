@@ -17,6 +17,10 @@ export const Head = styled.div`
   left:0;
   padding:40px 100px;
   display:flex;
+  @media only screen and (min-width:320px) and (max-width:420px){
+      padding:20px 30px;
+      height:120px;
+  }
 `;
 
 export const UnderneathImage = styled.div`
@@ -66,6 +70,10 @@ export const PictureContainer = styled.div`
         background-position:center;
         background-size:cover;
     }
+    @media only screen and (min-width:320px) and (max-width:420px){
+        top:30px;
+        right:30px;
+    }
 
 `
 
@@ -98,6 +106,9 @@ export const SideMenu = styled.aside`
     //position:fixed;
     width:75%;
     padding-right:30px;
+    @media only screen and (min-width:320px) and (max-width:720px){
+        display:none;
+    }
 
 `
 export const Nav= styled.ul`
@@ -192,19 +203,27 @@ export const ReferTabOne = styled.div`
     box-shadow:0 5px 10px rgba(0, 0, 0, 0.1);
 
 `
-export const ReferTabTwo = styled.div`
+export const ReferTabTwo = styled(ReferTabOne)`
     width:100%;
     height:auto;
     text-align:center;
-    padding:40px 50px;
-    border-radius:10px;
-    border:1px solid #5783e651;
-    box-shadow:0 5px 10px rgba(0, 0, 0, 0.1);
     h3{
         margin-top:20px;
     }
     p{
         font-size:11px;
+    }
+    svg{
+        margin:0 10px;
+    }
+    @media only screen and (min-width:320px) and (max-width:420px){
+        padding:40px 30px;
+        img{
+            width:90%;
+        }
+        h3{
+            font-size:14px;
+        }
     }
 
 `

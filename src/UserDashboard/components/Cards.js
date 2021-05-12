@@ -17,6 +17,14 @@ const Card = styled.div`
    h3{
        font-size:16px;
        color:#fff !important;
+       margin-top:10px;
+   }
+   @media only screen and (min-width:320px) and (max-width:420px){
+     width:100%;
+     h3{
+      font-size:13px !important;
+     }
+     
    }
 `
 
