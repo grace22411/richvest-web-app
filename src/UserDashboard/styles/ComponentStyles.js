@@ -12,7 +12,7 @@ export const Head = styled.div`
   height: 150px;
   width: 100%;
   background-color: #fff;
-  position: fixed !important;
+  position: fixed;
   z-index: 9999;
   top: 0;
   left: 0;
@@ -21,6 +21,8 @@ export const Head = styled.div`
   @media only screen and (min-width: 320px) and (max-width: 420px) {
     padding: 20px 30px;
     height: 120px;
+    position:static;
+
   }
 `;
 
