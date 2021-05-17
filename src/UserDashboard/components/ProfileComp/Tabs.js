@@ -5,16 +5,9 @@ import refer from "../../images/referandearn.svg"
 import {ProfileTabOne, ProfileTabTwo, ProfileTabThree, Form} from "../../styles/ComponentStyles"
 
 
-const style = {
-    width:"100%",
-    padding:"40px 50px",
-    borderRadius:"10px",
-    border:"1px solid #5783e651",
-    boxShadow:"0 5px 10px rgba(0, 0, 0, 0.1)"
-  }
 export const MyProfile = () => {
     return (
-        <ProfileTabOne style={style}>
+        <ProfileTabOne>
                 <div className="row">
                     <div className="col-md-2">
 
@@ -77,7 +70,7 @@ export const MyProfile = () => {
 
 export const NextOfKin = () => {
     return (
-        <ProfileTabTwo style={style}>
+        <ProfileTabTwo>
             <Form>
               <div className="form-group">
               <input
@@ -127,7 +120,7 @@ export const NextOfKin = () => {
 
 export const BankDetails = () => {
     return (
-        <ProfileTabThree style={style}>
+        <ProfileTabThree>
             <Form>
               <div className="form-group">
               <input

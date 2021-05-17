@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../components/Header";
 import SideBar from "../components/SideBar";
-import { DashboardContainer, TabContainer} from "../styles/PageStyles";
+import { DashboardContainer, TabContainer, ReferralContainer} from "../styles/PageStyles";
 import { Tabs } from "antd";
 import { MyProfile, NextOfKin, BankDetails } from "../components/ProfileComp/Tabs";
 
@@ -14,9 +14,6 @@ const Profile = () => {
       console.log(key);
     }
 
-   const style = {
-      width:"80%"
-    }
   return (
     <>
       <Header />
@@ -27,7 +24,7 @@ const Profile = () => {
           </div>
           <div className="col-md-9">
           <TabContainer className="container">
-            <div style={style}>
+            <ReferralContainer>
               <Tabs defaultActiveKey="1" onChange={callback}>
                 <TabPane tab="My Profile" key="1">
                   <MyProfile />
@@ -39,7 +36,7 @@ const Profile = () => {
                   <BankDetails />
                 </TabPane>
               </Tabs>
-              </div>
+              </ReferralContainer>
             </TabContainer>
           </div>
         </div>

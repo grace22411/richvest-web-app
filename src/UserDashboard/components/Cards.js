@@ -40,6 +40,10 @@ const InvestCard = styled.div`
        font-size:16px;
        color:#fff !important;
    }
+   @media only screen and (min-width:320px) and (max-width:420px){
+     margin-bottom:20px;
+     width:100%;
+   }
 `
 export const DashboardCard = ({title, value, color}) => {
   return (

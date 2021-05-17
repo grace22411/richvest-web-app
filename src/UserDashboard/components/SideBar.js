@@ -8,7 +8,7 @@ import savings from "../images/savings-icon.svg"
 import wallet from "../images/wallet-Icon.svg"
 import loan from "../images/loan-icon.svg"
 import dashboard from "../images/dashboard-icon.svg"
-import { HeadIcons, SideMenu, Nav, NavItem } from "../styles/ComponentStyles";
+import { HeadIcons, SideMenu, MobileBottomMenu,Nav, NavItem } from "../styles/ComponentStyles";
 
 function SideBar() {
     return (
@@ -28,10 +28,19 @@ function SideBar() {
                 <NavItem><Link to="/refferal"><img src="../images/refferal.svg" alt="" />Refferals</Link></NavItem>
             </Nav>
             </SideMenu>
+
+
+            <MobileBottomMenu>
+            <li><Link to="/dashboard"><img src={dashboard} alt="" /><br/>Dashboard</Link></li>
+                <li><Link to="/my-wallet"><img src={wallet} alt="" /><br/>Wallets</Link></li>
+                <li><Link to="/investment"><img src={investment} alt="" /><br/>Investments</Link></li>
+                <li><Link to="/my-savings"><img src={savings} alt="" /><br/>Savings</Link></li>
+                <li><Link to="/my-loan"><img src={loan} alt="" /><br/>Loan</Link></li>
+            </MobileBottomMenu>
             
             
         </IconContext.Provider>
     )
 }
 
-export default SideBar
+export default SideBar;

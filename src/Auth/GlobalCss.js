@@ -12,7 +12,11 @@ export const Head = styled.div`
   background-color: #fff;
   z-index:9999;
   filter:grayscale(0.1);
-  padding:20px 100px;
+  padding:20px 100px;@media only screen and (min-width:320px) and (max-width:420px){
+      padding:20px 30px;
+      height:120px;
+  }
+
 `;
 
 export const Logo = styled.div`
@@ -80,7 +84,11 @@ export const Container = styled.div`
         h3{
           font-size:15px;
           margin-bottom:10px;
-        }
+        }@media only screen and (min-width:320px) and (max-width:420px){
+      padding-right:20px;
+      padding-top:0;
+  }
+
      }
   }
 `;
@@ -102,6 +110,15 @@ export const WelcomeImage = styled.div`
       width:100%;
       height:100%;
     }
+    @media only screen and (min-width:320px) and (max-width:420px){
+      padding:20px 30px;
+      h2{
+        font-size:20px;
+      }
+      img{
+        margin-top:0 !important;
+      }
+  }
 `;
 
 

@@ -27,8 +27,12 @@ export const DashboardContainer = styled.div`
   }
   @media only screen and (min-width: 320px) and (max-width: 720px) {
     .row{
+      .col-md-3{
+        margin-top:0;
+        padding:0;
+      }
       .col-md-9{
-        h3{
+        h3,p{
           margin-left:15px;
         }
       }

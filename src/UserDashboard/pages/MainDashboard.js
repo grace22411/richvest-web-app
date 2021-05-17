@@ -3,18 +3,15 @@ import { DashboardCard } from "../components/Cards";
 import Header from "../components/Header";
 import SideBar from "../components/SideBar";
 import Title from "../components/Title";
-import refer from "../images/refer.svg";
+
 import styled from "styled-components";
 // import { Doughnut } from 'react-chartjs-2';
 import { DashboardContainer } from "../styles/PageStyles";
 import { FaFacebook, FaWhatsapp, FaTwitter } from "react-icons/fa";
+import ReferralModal from "../components/RefferalComponents/Modal";
 //import { Form } from "../styles/ComponentStyles";
 
-const ReferImage = styled.img`
-  object-fit: cover;
-  width: 100%;
-  height: 90%;
-`;
+
 const DashboardBits = styled.div`
   padding: 20px;
   border-radius: 10px;
@@ -88,7 +85,7 @@ function MainDashboard() {
                     <div className="row">
                       <div className="col-md-4">
                         <div className="image">
-                          <ReferImage src={refer} alt="refer us" /><br />
+                          <ReferralModal />
 
                           <FaFacebook style={{ color: "#2a5297" }} />
                           <FaTwitter
