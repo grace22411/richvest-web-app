@@ -18,7 +18,7 @@ import { endpoints } from "./endpoints";
 
 const token = localStorage.getItem("token");
 const user = localStorage.getItem("user");
-export const base_url = "http://testrich-001-site1.itempurl.com/";
+export const base_url = "https://testrich-001-site1.itempurl.com/";
 
 // load user
 export const loadUserService = (token) => async (dispatch) => {

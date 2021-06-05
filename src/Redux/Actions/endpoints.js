@@ -1,4 +1,4 @@
-export const base_url = "http://testrich-001-site1.itempurl.com/";
+export const base_url = "https://testrich-001-site1.itempurl.com/";
 // export const base_url = "https://localhost:44393/";
 
 export const endpoints = {
