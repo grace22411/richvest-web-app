@@ -8,9 +8,9 @@ import ReferContent from "./ReferContent";
 
 const ReferImage = styled.img`
   object-fit: cover;
-  width: 50%;
+  width: 100%;
   margin:auto !important;
-  height: 60%;
+  height: 70%;
   display:inline-block;
   cursor: pointer;
 `;

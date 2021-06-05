@@ -1,17 +1,66 @@
 import React, { useState } from "react";
 import { Illustration, Form, Container , WelcomeImage} from "./GlobalCss";
 import {Link, Redirect} from 'react-router-dom';
-import useForm from "./useForm"
-import validate from "./validationInfo"
 import business2 from "../UserDashboard/images/business2.svg"
+import {accountSetup} from '../Redux/Actions/auth';
+import PropTypes from 'prop-types';
+import {useHistory} from "react-router-dom"
+import {connect} from 'react-redux';
+import {setAlert} from '../Redux/Actions/alert';
+import {Spin} from 'antd';
 import Header from "./Header";
 
-function SignUp({submitForm}) {
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
+function SignUp({setAlert, accountSetup, isAuthenticated, loading}) {
+  const history = useHistory()
+  const [formData, setFormData] = useState({
+    emailAddress: '',
+    firstname: '',
+   lastname: '',
+    password: '',
+    referralCode:''
+  });
+  const {emailAddress, firstname, lastname, password, referralCode} = formData;
+
+  const onFormChange = (e) => {
+    setFormData({...formData, [e.target.name]: e.target.value});
+  };
+  const onSubmitForm = (e) => {
+    e.preventDefault();
+    // if (NewPassword != NewPassword2) {
+    //   setAlert('Password do not match', 'error');
+    //   return;
+    // }
+    console.log(formData);
+    Object.entries(formData).forEach((each,index) => {
+      if (each[1] === '' && index !== 4) {
+        setAlert(`${each[0]} is required`, 'error');
+        return
+      }
+    });
+
+    const payload = JSON.stringify({
+      emailAddress: emailAddress,
+      firstname: firstname,
+      lastname:lastname,
+      password: password,
+      referralCode:referralCode
+    });
+
+    accountSetup(payload, {redirect: (url) => history.replace(url)});
+    
+  };
+  if (isAuthenticated) {
+    return <Redirect to="/dashboard" />;
+  }
   
-  
-  const {handleChange, values, handleSubmit, errors} = useForm(submitForm,validate)
+  // Redirect if logged in
+  // if (isAuthenticated) {
+  //   const userDetails = JSON.parse(localStorage.getItem('user'));
+  //   if (userDetails.userType === 1) {
+  //     // redirect to super admin dashboard
+  //     return <Redirect to="/dashboard" />;
+  //   }
+  // }
 
 
   return (
@@ -27,7 +76,7 @@ function SignUp({submitForm}) {
                 </WelcomeImage>
           </div>
           <div className="col-md-5 signup-form">
-            <Form onSubmit={handleSubmit}>
+            <Form>
               <h3>Sign Up! </h3>
               <div className="form-group">
               <input
@@ -36,10 +85,10 @@ function SignUp({submitForm}) {
                   id="exampleInputFirstName"
                   aria-describedby="firstNameHelp"
                   placeholder="Enter first name"
-                  //value={values.email}
-                  onChange={handleChange}
+                  name="firstname"
+                  value={firstname}
+                onChange={onFormChange}
                 />
-                {errors.firstname && <p style={{color:"red", fontSize:"11px", fontWeight:500}}>{errors.firstname}</p>}
               </div>
               <div className="form-group">
                 <input
@@ -48,10 +97,10 @@ function SignUp({submitForm}) {
                   id="exampleInputLastName"
                   aria-describedby="lastNameHelp"
                   placeholder="Enter last name"
-                  //value={values.email}
-                  onChange={handleChange}
+                  name="lastname"
+                  value={lastname}
+                onChange={onFormChange}
                 />
-                {errors.lastname && <p style={{color:"red", fontSize:"11px", fontWeight:500}}>{errors.lastname}</p>}
               </div>
               <div className="form-group">
                 <input
@@ -60,10 +109,10 @@ function SignUp({submitForm}) {
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
                   placeholder="Enter email"
-                  //value={values.email}
-                  onChange={handleChange}
+                  name="emailAddress"
+                  value={emailAddress}
+                  onChange={onFormChange}
                 />
-                {errors.email && <p style={{color:"red", fontSize:"11px", fontWeight:500}}>{errors.email}</p>}
               </div>
               <div className="form-group">
                 <input
@@ -72,10 +121,11 @@ function SignUp({submitForm}) {
                   id="exampleInputPassword1"
                   aria-describedby="PasswordHelp"
                   placeholder="Enter Password"
-                  //value={values.password}
-                  onChange={handleChange}
+                  name="password"
+                  value={password}
+
+                onChange={onFormChange}
                 />
-                {errors.password && <p style={{color:"red", fontSize:"11px", fontWeight:500}}>{errors.password}</p>}
                 
               </div>
               <div className="form-group">
@@ -86,12 +136,11 @@ function SignUp({submitForm}) {
                   aria-describedby="CodeHelp"
                   placeholder="Referal Code(Optional)"
                   //value={values.password}
-                  onChange={handleChange}
+                  onChange={onFormChange}
                 />
-                {errors.code && <p style={{color:"red", fontSize:"11px", fontWeight:500}}>{errors.code}</p>}
                 
               </div>
-              <button className="btn">Get Started</button>
+              <button className="btn" onClick={onSubmitForm}>Get Started {loading && <Spin />}</button>
               <p style={{marginTop:"20px"}}>Already a member of Richvest 360? <Link to="/" style={{color:"#0303ad"}}>Sign In</Link></p>
             </Form>
           </div>
@@ -100,5 +149,13 @@ function SignUp({submitForm}) {
     </div>
   );
 }
+SignUp.propTypes = {
+  accountSetup: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+};
 
-export default SignUp;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  loading: state.auth.loading,
+});
+export default connect(mapStateToProps, {accountSetup, setAlert})(SignUp);

@@ -1,7 +1,11 @@
-import React from "react";
+import React, {useEffect}from "react";
 import Login from "./Auth/Login";
 import { BrowserRouter, Route, Router, Switch, withRouter } from "react-router-dom";
 import SignUp from "./Auth/SignUp";
+
+import Alert from "../src/SharedComponents.js/globalService/Alert";
+import setAuthToken from "./features/setAuthToken";
+
 import EmailVerification from "./Auth/EmailVerification";
 import SetPassword from "./Auth/SetPassword";
 import MainDashboard from "./UserDashboard/pages/MainDashboard";
@@ -9,14 +13,24 @@ import Investment from "./UserDashboard/pages/Investment";
 import MiniInvestment from "./UserDashboard/pages/MiniInvestment";
 import AboutProduct from "./UserDashboard/pages/AboutProduct";
 import SourceFunding from "./UserDashboard/pages/SourceFunding";
+import { loadUserService } from "./Redux/Actions/auth";
+import store from "./Redux/store";
 import Refferal from "./UserDashboard/pages/Refferal";
 import Profile from "./UserDashboard/pages/Profile";
 
+import { Provider } from "react-redux";
+
 function App() {
+  useEffect(() => {
+    store.dispatch(loadUserService());
+  }, []);
   return (
     <>
+    <Alert />
       <BrowserRouter>
         <Switch>
+
+      
           <Route exact path="/" component={Login} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/emailverification" component={EmailVerification} />

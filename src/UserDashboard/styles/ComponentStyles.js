@@ -3,7 +3,7 @@ import profile from "../images/profile.png";
 
 export const HeadWrap = styled.div`
   filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.1));
-  @media only screen and (min-width: 320px) and (max-width: 420px) {
+  @media only screen and (min-width: 320px) and (max-width: 540px) {
     height: 120px;
   }
 `;
@@ -18,10 +18,11 @@ export const Head = styled.div`
   left: 0;
   padding: 40px 100px;
   display: flex;
-  @media only screen and (min-width: 320px) and (max-width: 420px) {
+  @media only screen and (min-width: 321px) and (max-width: 540px) {
     padding: 20px 30px;
-    height: 120px;
+    height: 100px;
     position:static;
+    clip-path: none;
 
   }
 `;
@@ -34,6 +35,9 @@ export const UnderneathImage = styled.div`
     width: 40%;
     float: right;
   }
+  @media only screen and (min-width: 320px) and (max-width: 720px) {
+      display:none;
+    }
 `;
 
 export const Logo = styled.div`
@@ -81,9 +85,20 @@ export const PictureContainer = styled.div`
     background-image: url(${profile});
     background-position: center;
     background-size: cover;
+    .drop{
+      background-color: #459fe4;
+      width:20px;
+      height:20px;
+      border-radius: 10px;;
+      padding:0px 4px;
+      float:right;
+      bottom:0;
+      margin-top:65px;
+      //position:absolute;
+    }
   }
   @media only screen and (min-width: 320px) and (max-width: 420px) {
-    top: 30px;
+    top: 14px;
     right: 30px;
     height:50px;
     width:50px;
@@ -102,10 +117,16 @@ export const PictureContainer = styled.div`
     .picture{
         width:40px;
         height:40px;
+        .drop{
+          margin-top: 30px;;
+        }
     }
   }
 `;
-
+export const PictureContainerProfile = styled(PictureContainer)`
+  right:0 ;
+  top:0;
+`;
 //Sidebar styles
 export const HeadIcons = styled.div`
   width: 85%;
@@ -200,6 +221,7 @@ export const NavItem = styled.li`
 `;
 
 export const EachProductDetails = styled.div`
+margin-bottom: 80px;
   .row {
     .col-md-6 {
       .image {
@@ -208,6 +230,16 @@ export const EachProductDetails = styled.div`
         padding: 40px 20px;
         width: 88%;
         border-radius: 8px;
+        text-align: center;
+        button{
+          border:none;
+          outline: none;
+          background-color: #0303AD;
+          color:#fff;
+          padding:3px 14px;
+          border-radius:10px;
+
+        }
         .product-image {
           background-position: center;
           width: 85%;
@@ -224,15 +256,16 @@ export const EachProductDetails = styled.div`
           border-top: 3px solid #0303ad;
           display: flex;
           margin-top: 20px;
+          text-align:left;
           width: 100%;
           flex-wrap: wrap;
           padding: 20px 0;
           justify-content: space-between;
           .each-info {
-            border: 1px solid #5783e6;
+            //border: 1px solid #5783e6;
             width: 47%;
             padding: 10px;
-            margin-bottom: 20px;
+            //margin-bottom: 20px;
             border-radius: 8px;
             h3 {
               font-size: 12px;

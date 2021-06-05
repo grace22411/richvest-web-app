@@ -2,6 +2,7 @@ import React from "react";
 import logo from "../images/logo.png";
 import purpleHue from "../images/purplehue.png";
 import { Link } from "react-router-dom";
+import {DropdownMenu} from "../components/Dropdown"
 import {
   Head,
   HeadWrap,
@@ -10,12 +11,17 @@ import {
   UnderneathImage,
 } from "../styles/ComponentStyles";
 
+
 function Header() {
   return (
     <>
       <PictureContainer>
         <div className="white-background">
-        <div className="picture"></div>
+        <div className="picture">
+          <div className="drop">
+            <DropdownMenu />
+          </div>
+        </div>
         </div>
       </PictureContainer>
       <HeadWrap>

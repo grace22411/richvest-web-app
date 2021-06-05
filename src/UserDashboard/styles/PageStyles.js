@@ -12,6 +12,7 @@ export const DashboardContainer = styled.div`
       margin-top: -40px;
       padding: 0;
       color: #32427c;
+      margin-bottom: 80px;;
       h3 {
         font-size: 17px;
         font-weight: 600;
@@ -76,7 +77,7 @@ export const TabContainer = styled.div`
       }
     }
   }
-  @media only screen and (min-width: 320px) and (max-width: 540px) {
+  @media only screen and (min-width: 321px) and (max-width: 540px) {
     padding-right: 15px;
   }
 `;
@@ -87,6 +88,9 @@ export const ProductsContainer = styled.div`
   padding: 50px 50px;
   border-radius: 10px;
   justify-content: center;
+  @media only screen and (min-width: 321px) and (max-width: 540px) {
+    padding:20px;
+  }
 `;
 export const ProductImage = styled.div`
   width: 90%;
@@ -111,6 +115,9 @@ export const ProductImage = styled.div`
         font-size:25px;
       }
     } */
+    @media only screen and (min-width: 321px) and (max-width: 540px) {
+    height:150px;
+  }
 `;
 export const ProductDetails = styled.div`
   position: relative;
@@ -158,10 +165,47 @@ export const ProductDetails = styled.div`
       }
     }
   }
+  @media only screen and (min-width: 321px) and (max-width: 540px) {
+    margin: 0 auto 100px auto;
+    .details{
+      height: 150px;
+      left:40px;
+      top:54px;
+      .det{
+        padding: 0 20px 8px 20px;
+        div{
+          p,h3{
+            font-size:10px;
+            margin-left: 0;
+          }
+          button{
+            padding:3px 10px;
+            font-size:13px;
+          }
+        }
+      }
+    }
+  }
 `;
 export const ReferralContainer = styled.div`
   width: 80%;
   @media only screen and (min-width: 320px) and (max-width: 540px) {
     width: 100%;
   }
+`;
+export const ChartDiv = styled.div`
+    border: 1px solid #407BFF;
+  padding: 20px;
+  margin-top: 20px;;
+  width:100%;
+  border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    .doughnut{
+      .donutchart-legend{
+      display: flex;
+      width:100%;
+    }
+    }
+    
 `;

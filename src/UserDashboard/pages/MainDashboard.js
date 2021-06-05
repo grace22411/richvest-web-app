@@ -6,11 +6,11 @@ import Title from "../components/Title";
 
 import styled from "styled-components";
 // import { Doughnut } from 'react-chartjs-2';
-import { DashboardContainer } from "../styles/PageStyles";
+import { DashboardContainer, ChartDiv } from "../styles/PageStyles";
 import { FaFacebook, FaWhatsapp, FaTwitter } from "react-icons/fa";
 import ReferralModal from "../components/RefferalComponents/Modal";
+import DonutChart from "react-donut-chart";
 //import { Form } from "../styles/ComponentStyles";
-
 
 const DashboardBits = styled.div`
   padding: 20px;
@@ -18,15 +18,22 @@ const DashboardBits = styled.div`
   border: 1px solid #5783e651;
   .row {
     .col-md-4 {
-      text-align:center;
+      text-align: center;
       .image {
         width: 200px;
         height: 250px;
-        text-align:center;
-        svg{
-          margin:20px 10px;
-          size:30px;
+        text-align: center;
+        svg {
+          margin: 0px 10px;
+          size: 30px;
         }
+      }
+    }
+  }
+  @media only screen and (min-width: 321px) and (max-width: 540px) {
+    .row {
+      .col-md-4 {
+        display: none;
       }
     }
   }
@@ -86,7 +93,7 @@ function MainDashboard() {
                       <div className="col-md-4">
                         <div className="image">
                           <ReferralModal />
-
+                          <p>Refer and Earn</p>
                           <FaFacebook style={{ color: "#2a5297" }} />
                           <FaTwitter
                             style={{
@@ -107,15 +114,35 @@ function MainDashboard() {
                         </div>
                       </div>
                     </div>
+                    {/* <span> Refer and Earn </span> */}
                   </DashboardBits>
                 </div>
-                <div className="col-md-10">
-                  {/* <Doughnut
-                    data={[{'red' : 2, 'blue':3}]}
-                    width={100}
-                    height={50}
-                    options={{ maintainAspectRatio: false }}
-                  /> */}
+                <div className="col-md-12">
+                  <ChartDiv>
+                    <DonutChart
+                      width="200"
+                      height="150"
+                      color={['#8655FF',"#14D4EB","#1C2AB6","#356AFC"]}
+                      data={[
+                        {
+                          label: "Wallet",
+                          value: 25,
+                        },
+                        {
+                          label: "Investment",
+                          value: 25,
+                        },
+                        {
+                          label: "Saving",
+                          value: 25,
+                        },
+                        {
+                          label: "Loan",
+                          value: 25,
+                        },
+                      ]}
+                    />
+                  </ChartDiv>
                 </div>
               </div>
             </div>

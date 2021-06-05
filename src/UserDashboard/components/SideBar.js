@@ -8,6 +8,7 @@ import savings from "../images/savings-icon.svg"
 import wallet from "../images/wallet-Icon.svg"
 import loan from "../images/loan-icon.svg"
 import dashboard from "../images/dashboard-icon.svg"
+import refer from "../images/referral.svg"
 import { HeadIcons, SideMenu, MobileBottomMenu,Nav, NavItem } from "../styles/ComponentStyles";
 
 function SideBar() {
@@ -25,7 +26,7 @@ function SideBar() {
                 <NavItem><Link to="/investment"><img src={investment} alt="" />Investments</Link></NavItem>
                 <NavItem><Link to="/my-savings"><img src={savings} alt="" />Savings</Link></NavItem>
                 <NavItem><Link to="/my-loan"><img src={loan} alt="" />Loan</Link></NavItem>
-                <NavItem><Link to="/refferal"><img src="../images/refferal.svg" alt="" />Refferals</Link></NavItem>
+                <NavItem><Link to="/refferal"><img src={refer} alt="" />Refferals</Link></NavItem>
             </Nav>
             </SideMenu>
 
