@@ -12,17 +12,17 @@ import Header from "./Header";
 
 function SignUp({setAlert, accountSetup, isAuthenticated, loading}) {
   const history = useHistory()
-  const [formData, setFormData] = useState({
+  const [userDetail, setuserDetail] = useState({
     emailAddress: '',
     firstname: '',
    lastname: '',
     password: '',
     referralCode:''
   });
-  const {emailAddress, firstname, lastname, password, referralCode} = formData;
+  const {emailAddress, firstname, lastname, password, referralCode} = userDetail;
 
   const onFormChange = (e) => {
-    setFormData({...formData, [e.target.name]: e.target.value});
+    setuserDetail({...userDetail, [e.target.name]: e.target.value});
   };
   const onSubmitForm = (e) => {
     e.preventDefault();
@@ -30,8 +30,8 @@ function SignUp({setAlert, accountSetup, isAuthenticated, loading}) {
     //   setAlert('Password do not match', 'error');
     //   return;
     // }
-    console.log(formData);
-    Object.entries(formData).forEach((each,index) => {
+    console.log(userDetail);
+    Object.entries(userDetail).forEach((each,index) => {
       if (each[1] === '' && index !== 4) {
         setAlert(`${each[0]} is required`, 'error');
         return
