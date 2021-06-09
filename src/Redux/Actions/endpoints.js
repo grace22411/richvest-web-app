@@ -1,4 +1,4 @@
-export const base_url = "https://testrich-001-site1.itempurl.com/";
+export const base_url = "https://richvest360api-dev-1.eba-dq6ar5m2.us-east-1.elasticbeanstalk.com/";
 // export const base_url = "https://localhost:44393/";
 
 export const endpoints = {

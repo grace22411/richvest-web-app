@@ -41,6 +41,7 @@ export default function (state = initialState, action) {
       //   "userDetails",
       //   JSON.stringify(payload.objectValue.userProfileInformation)
       // );
+      console.log(payload)
 
       return {
         ...state,

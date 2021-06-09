@@ -18,7 +18,7 @@ import { endpoints } from "./endpoints";
 
 const token = localStorage.getItem("token");
 const user = localStorage.getItem("user");
-export const base_url = "https://testrich-001-site1.itempurl.com/";
+export const base_url = "https://richvest360api-dev-1.eba-dq6ar5m2.us-east-1.elasticbeanstalk.com/";
 
 // load user
 export const loadUserService = (token) => async (dispatch) => {
@@ -54,14 +54,16 @@ export const loginService = (payload,logPage) => async (dispatch) => {
       `${endpoints.login}?emailAddress=${emailAddress}&password=${password}`,
       config
     )
-    .then((res) => {
+    .then(async(res) => {
         dispatch(setAlert("Welcome", "success"));
-    console.log(res.data);
+    console.log(res);
     dispatch({
       type: LOGIN_SUCCESS,
       payload: res.data,
     });
     // dispatch(loadUserService(res.data));
+    // const {data} = res.data;
+    // await localStorage.setItem("user", JSON.stringify(data))
     logPage.redirect("/dashboard")
     })
     .catch ((err) => {
@@ -99,12 +101,12 @@ export const accountSetup = (payload,page) => async (dispatch) => {
   dispatch({ type: SPINNER, payload: true });
   axios
     .post(`${endpoints.AccountSetup}`, payload, config)
-    .then((res) => {
+    .then(async(res) => {
       dispatch({ type: SPINNER, payload: false });
       dispatch(setAlert("Account Setup Successful"));
-      console.log(res);
-
+      const {data} = res.data;
       dispatch(loadUserService());
+      await localStorage.setItem("user", JSON.stringify(data))
       page.redirect("/dashboard")
     })
     .catch((err) => {

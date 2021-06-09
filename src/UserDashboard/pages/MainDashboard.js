@@ -1,6 +1,7 @@
 import React from "react";
 import { DashboardCard } from "../components/Cards";
 import Header from "../components/Header";
+import {useHistory} from "react-router-dom"
 import SideBar from "../components/SideBar";
 import Title from "../components/Title";
 
@@ -40,6 +41,14 @@ const DashboardBits = styled.div`
 `;
 
 function MainDashboard() {
+  const user = JSON.parse(localStorage.getItem("user"))
+
+  // const history = useHistory();
+  // if(user === null){
+  //   console.log("logout");
+  //   history.push("/");
+  // }
+
   return (
     <>
       <Header />
@@ -49,7 +58,7 @@ function MainDashboard() {
             <SideBar />
           </div>
           <div className="col-md-9">
-            <Title name="Precious" />
+            <Title name={user.firstName || 'Precious'}/>
             <div className="container">
               <div className="row">
                 <div className="col-md-8 ">

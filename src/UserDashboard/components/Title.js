@@ -8,6 +8,9 @@ const Contain = styled.div`
     h3{
         font-size:17px;
         font-weight:600;
+        span{
+          text-transform: capitalize !important;
+        }
         img{
           width:18px;
           height:auto;
@@ -25,7 +28,7 @@ const Contain = styled.div`
 const Title = ({name}) => {
   return (
     <Contain>
-        <h3>Hello {name}<img src={wave} alt="hand wave" /> </h3>
+        <h3>Hello <span>{name}</span>  <img src={wave} alt="hand wave" /> </h3>
         <p>Welcome,</p>
    
     </Contain>
