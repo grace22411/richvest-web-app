@@ -10,3 +10,16 @@ body {
   position: relative;
 }
 
+.container, .col-md-2,.col-md-3,.col-md-10 .col-md-9{
+  padding:0;
+}
+
+
+  .doughnut{
+      width:200px;
+      height:150px;
+  }
+  .donutchart-legend{
+  display: flex;
+  width:100%;
+}

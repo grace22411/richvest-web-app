@@ -1,46 +1,8 @@
 import styled from "styled-components";
 
-export const DashboardContainer = styled.div`
-  // border:1px solid red;
-  height: auto;
-  margin-top: 53px;
-  .row {
-    .col-md-3 {
-      margin-top: -40px;
-    }
-    .col-md-9 {
-      margin-top: -40px;
-      padding: 0;
-      color: #32427c;
-      margin-bottom: 80px;;
-      h3 {
-        font-size: 17px;
-        font-weight: 600;
-        color: #32427c;
-      }
-      p {
-        font-size: 12px;
-      }
-      .row {
-        margin-top: 20px;
-      }
-    }
-  }
-  @media only screen and (min-width: 320px) and (max-width: 720px) {
-    .row{
-      .col-md-3{
-        margin-top:0;
-        padding:0;
-      }
-      .col-md-9{
-        h3,p{
-          margin-left:15px;
-        }
-      }
-    }
-  }
-`;
-
+export const Content= styled.div`
+    padding: 4% 7% 4% 5%;
+`
 export const TabContainer = styled.div`
   margin-top: 30px;
   padding-right: 45px;
@@ -201,11 +163,6 @@ export const ChartDiv = styled.div`
   border-radius: 10px;
     display: flex;
     justify-content: center;
-    .doughnut{
-      .donutchart-legend{
-      display: flex;
-      width:100%;
-    }
-    }
+    
     
 `;

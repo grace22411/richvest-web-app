@@ -8,7 +8,7 @@ import setAuthToken from "./features/setAuthToken";
 
 import EmailVerification from "./Auth/EmailVerification";
 import SetPassword from "./Auth/SetPassword";
-import MainDashboard from "./UserDashboard/pages/MainDashboard";
+import Dashboard from "./UserDashboard/pages/Dashboard";
 import Investment from "./UserDashboard/pages/Investment";
 import MiniInvestment from "./UserDashboard/pages/MiniInvestment";
 import AboutProduct from "./UserDashboard/pages/AboutProduct";
@@ -17,8 +17,12 @@ import { loadUserService } from "./Redux/Actions/auth";
 import store from "./Redux/store";
 import Refferal from "./UserDashboard/pages/Refferal";
 import Profile from "./UserDashboard/pages/Profile";
-
+import "antd/dist/antd.css";
 import { Provider } from "react-redux";
+
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
 
 function App() {
   useEffect(() => {
@@ -40,7 +44,7 @@ function App() {
           <Route
           exact
           path="/dashboard"
-          component={MainDashboard}
+          component={Dashboard}
         />
         <Route
           exact

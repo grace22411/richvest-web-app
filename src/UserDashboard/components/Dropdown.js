@@ -7,14 +7,14 @@ import { logoutService } from "../../Redux/Actions/auth";
 const style = {
   color: "#32427c",
   fontSize: "12px",
-  fontWeight: "400",
+  fontWeight: "500",
 };
 
 const menuProile = (
   <Menu>
     <Menu.Item key="0">
       <Link style={style} to="/profile">
-        Take Phote
+        Take Phot0
       </Link>
     </Menu.Item>
     <Menu.Item key="1">
@@ -33,7 +33,7 @@ const menuProile = (
 export function DropdownMenu() {
   const history = useHistory();
   const logOut = () => {
-    <Redirect to="/" />;
+    history.push('/');
     logoutService();
   };
 
@@ -45,7 +45,7 @@ export function DropdownMenu() {
         </Link>
       </Menu.Item>
       <Menu.Item key="1">
-        <Link style={style} onClick={() => logOut()} to="/">
+        <Link style={style} onClick={() => logOut()} to="#">
           Sign Out
         </Link>
       </Menu.Item>

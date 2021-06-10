@@ -15,6 +15,7 @@ import { Link, Redirect } from "react-router-dom";
 import setAuthToken from "../../features/setAuthToken";
 import { handleGeneralErrors } from "../../SharedComponents.js/globalService/handleGeneralError.js";
 import { endpoints } from "./endpoints";
+import * as jwt from "jsonwebtoken"
 
 const token = localStorage.getItem("token");
 const user = localStorage.getItem("user");
@@ -33,58 +34,97 @@ export const loadUserService = (token) => async (dispatch) => {
     });
   }
 };
-
+    const jwtConfig = {
+        secret: "PPRvE7CrIqzCnEYLF6InNv7ADrNqCzjInAQYLH9JxSIsWYdcjSnQYTL6nEu0MIES"
+    }
+export function getUserFromLocalStorage(token) {
+    // const token =  localStorage.getItem("user");
+    const secret = jwtConfig.secret;
+    let user = jwt.verify(token, secret)
+    return user;
+}
 //login user
 export const loginService = (payload,logPage) => async (dispatch) => {
-  const config = {
-    Jwt: {
-        "secret": "PPRvE7CrIqzCnEYLF6InNv7ADrNqCzjInAQYLH9JxSIsWYdcjSnQYTL6nEu0MIES",
-        "expirationInMinutes": 1440},
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
-
-  const { emailAddress, password } = payload || {};
 
   dispatch({ type: LOADING });
   
-    console.log(payload);
-    const res = await axios.post(
-      `${endpoints.login}?emailAddress=${emailAddress}&password=${password}`,
-      config
-    )
-    .then(async(res) => {
-        dispatch(setAlert("Welcome", "success"));
-    console.log(res);
-    dispatch({
-      type: LOGIN_SUCCESS,
-      payload: res.data,
-    });
-    // dispatch(loadUserService(res.data));
-    // const {data} = res.data;
-    // await localStorage.setItem("user", JSON.stringify(data))
-    logPage.redirect("/dashboard")
-    })
-    .catch ((err) => {
-    if (
-      err.message === "Network Error" ||
-      err.message === "timeout of 0ms exceeded"
-    ) {
-      dispatch({ type: SPINNER, payload: false });
-      dispatch(handleGeneralErrors(err.message));
-      dispatch({
-        type: LOGIN_FAIL,
-      });
-    } else {
-      dispatch({ type: SPINNER, payload: false });
-      dispatch(handleGeneralErrors(err));
-      dispatch({
-        type: LOGIN_FAIL,
-      });
-      console.log(err);
+  
+  const handleLogin = async () => {
+      try {
+          const options = {
+              method: 'POST',
+              data: {...payload},
+              url: `${endpoints.login}`,
+              headers: {
+                  "Content-Type": "application/json",
+                },
+            }
+            const response = await axios(options);
+            dispatch(setAlert("Welcome", "success"));
+            const user = getUserFromLocalStorage(response.data);
+            localStorage.setItem("user", JSON.stringify(user));
+            logPage.redirect("/dashboard")
+            //console.log(user);
+
+        } catch(err) {
+            console.log(err.response.data)
+            dispatch(setAlert(err.response.data, 'error'))
+            if (
+                err.message === "Network Error" ||
+                err.message === "timeout of 0ms exceeded"
+              ) {
+                dispatch({ type: SPINNER, payload: false });
+                dispatch(handleGeneralErrors(err.message));
+                dispatch({
+                  type: LOGIN_FAIL,
+                });
+              } else {
+                dispatch({ type: SPINNER, payload: false });
+                dispatch(handleGeneralErrors(err));
+                dispatch({
+                  type: LOGIN_FAIL,
+                });
+                console.log(err);
+              }
+        }
     }
-  })
+
+    handleLogin()
+    // const res = await axios.post(
+    //   `${endpoints.login}`, payload,
+    //   config
+    // )
+    // .then(async(res) => {
+    //     dispatch(setAlert("Welcome", "success"));
+    // console.log(res);
+    // dispatch({
+    //   type: LOGIN_SUCCESS,
+    //   payload: res.data,
+    // });
+    // dispatch(loadUserService());
+    // console.log(res.data)
+    // await localStorage.setItem("user", JSON.stringify(res.data))
+    // logPage.redirect("/dashboard")
+    // })
+    // .catch ((err) => {
+    // if (
+    //   err.message === "Network Error" ||
+    //   err.message === "timeout of 0ms exceeded"
+    // ) {
+    //   dispatch({ type: SPINNER, payload: false });
+    //   dispatch(handleGeneralErrors(err.message));
+    //   dispatch({
+    //     type: LOGIN_FAIL,
+    //   });
+    // } else {
+    //   dispatch({ type: SPINNER, payload: false });
+    //   dispatch(handleGeneralErrors(err));
+    //   dispatch({
+    //     type: LOGIN_FAIL,
+    //   });
+    //   console.log(err);
+    // }
+//   })
 };
 
 //Account Setup
@@ -104,8 +144,11 @@ export const accountSetup = (payload,page) => async (dispatch) => {
     .then(async(res) => {
       dispatch({ type: SPINNER, payload: false });
       dispatch(setAlert("Account Setup Successful"));
+
       const {data} = res.data;
+
       dispatch(loadUserService());
+
       await localStorage.setItem("user", JSON.stringify(data))
       page.redirect("/dashboard")
     })

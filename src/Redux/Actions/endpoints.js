@@ -3,7 +3,7 @@ export const base_url = "https://www.richvest.gq/";
 
 export const endpoints = {
   //Auth module
-  login: `${base_url}User/Login/emailAddress/password`,
+  login: `${base_url}User/Login`,
   //VerifyUserEmail: `${base_url}api/Auth/VerifyUserEmail`,
   AccountSetup: `${base_url}User/Register`,
   //ChangePassword: `${base_url}api/Auth/ChangePassword`,

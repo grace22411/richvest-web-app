@@ -42,6 +42,7 @@ const Login = ({ loginService, isAuthenticated, loading, setAlert }) => {
   // Redirect if logged in
   if (isAuthenticated) {
       // redirect to dashboard
+      const userDetails = JSON.parse(localStorage.getItem('user'));
       return <Redirect to="/dashboard" />;
     }
   

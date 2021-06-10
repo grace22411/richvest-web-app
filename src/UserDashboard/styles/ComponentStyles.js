@@ -1,23 +1,15 @@
 import styled from "styled-components";
 import profile from "../images/profile.png";
 
-export const HeadWrap = styled.div`
-  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.1));
-  @media only screen and (min-width: 320px) and (max-width: 540px) {
-    height: 120px;
-  }
-`;
 export const Head = styled.div`
-  clip-path: polygon(0 0, 100% 0, 100% 76%, 82% 100%, 33% 91%, 0 84%);
-  height: 150px;
+  height: 100px;
   width: 100%;
   background-color: #fff;
-  position: fixed;
+  //position: fixed;
   z-index: 9999;
-  top: 0;
-  left: 0;
-  padding: 40px 100px;
+  padding: 20px 100px;
   display: flex;
+  box-shadow: 12px 12px 24px rgba(39, 78, 222, 0.2);;
   @media only screen and (min-width: 321px) and (max-width: 540px) {
     padding: 20px 30px;
     height: 100px;
@@ -25,19 +17,6 @@ export const Head = styled.div`
     clip-path: none;
 
   }
-`;
-
-export const UnderneathImage = styled.div`
-  width: 100%;
-  height: 180px;
-  //border:1px solid blue;
-  img {
-    width: 40%;
-    float: right;
-  }
-  @media only screen and (min-width: 320px) and (max-width: 720px) {
-      display:none;
-    }
 `;
 
 export const Logo = styled.div`
@@ -50,9 +29,21 @@ export const Logo = styled.div`
     }
   }
 `;
+export const Profile = styled.div`
+  width:30%;
+  margin-left: auto;
+  display: flex;
+  justify-content: flex-end;
+  //border:1px solid red;
+  p{
+    font-weight:500;
+    margin-top: 20px;;
+    margin-right:15px;
+  }
+`
 export const PictureContainer = styled.div`
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   //border:2px solid blue;
   border-radius: 100%;
   background: linear-gradient(
@@ -61,25 +52,22 @@ export const PictureContainer = styled.div`
     #1510f4 42.16%,
     rgba(196, 196, 196, 0) 43.63%
   );
-  margin-left: auto;
-  position: absolute;
-  top: 90px;
-  right: 200px;
+  
   z-index: 9999;
   padding: 5px;
 
   .white-background {
     background-color: #fff;
-    width: 90px;
+    width: 60px;
     box-shadow: 9.78282px 9.78282px 19.5656px rgba(39, 78, 222, 0.1);
-    height: 90px;
+    height: 60px;
     //margin-left:-7px;
     border-radius: 100%;
     padding: 10px;
   }
   .picture {
-    width: 70px;
-    height: 70px;
+    width: 40px;
+    height: 40px;
     background-color: #fff;
     border-radius: 100%;
     background-image: url(${profile});
@@ -91,9 +79,10 @@ export const PictureContainer = styled.div`
       height:20px;
       border-radius: 10px;;
       padding:0px 4px;
+      margin-right:-5px;
       float:right;
       bottom:0;
-      margin-top:65px;
+      margin-top:35px;
       //position:absolute;
     }
   }
@@ -150,11 +139,11 @@ export const HeadIcons = styled.div`
   }
 `;
 export const SideMenu = styled.aside`
-  border-right: 2px solid #d4d7e4;
   height: calc(100vh - 120px);
+  background-color: #191970;
   //position:fixed;
-  width: 75%;
-  padding-right: 30px;
+  width: 100%;
+  padding:50px 0 0  50px;
   @media only screen and (min-width: 320px) and (max-width: 720px) {
     display: none;
   }
@@ -196,14 +185,14 @@ export const MobileBottomMenu = styled.div`
 `;
 
 export const Nav = styled.ul`
-  margin-top: 50px;
+  //margin-top: 50px;
   padding-left: 0;
 `;
 export const NavItem = styled.li`
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   list-style: none;
   a {
-    color: #32427c;
+    color: #fff;
     font-size: 13px;
     :hover {
       font-weight: 600;
@@ -217,6 +206,8 @@ export const NavItem = styled.li`
     margin-right: 15px;
     width: 20px;
     height: 20px;
+    background-color: #fff;
+    border-radius:100%;;
   }
 `;
 

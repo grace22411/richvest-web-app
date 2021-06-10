@@ -27,7 +27,9 @@ export const handleGeneralErrors = (errors) => (dispatch) => {
       } else if (errors.response.data.statusCode === 8) {
         dispatch(setAlert("Bad Request", "error"));
       } else if (errors.response.data.statusCode === 9) {
-        dispatch(setAlert("Sign In Error", "error"));
+        dispatch(setAlert("Sign In Error", "error"));}
+        else if (errors.response.data.statusCode === 401) {
+          dispatch(setAlert("Invalid Email Address", "error"));
       } else if (errors.response.data.statusCode === 10) {
         dispatch(setAlert("Email already confirmed", "error"));
       } else if (errors.response.data.statusCode === 12) {
