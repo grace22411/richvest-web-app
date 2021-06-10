@@ -45,7 +45,7 @@ export function DropdownMenu() {
         </Link>
       </Menu.Item>
       <Menu.Item key="1">
-        <Link style={style} onClick={() => logOut()} to="#">
+        <Link style={style} onClick={() => logOut()} to="/">
           Sign Out
         </Link>
       </Menu.Item>
