@@ -58,7 +58,7 @@ function MainDashboard() {
             <SideBar />
           </div>
           <div className="col-md-9">
-            <Title name="Precious"/>
+            <Title name='Precious'/>
             <div className="container">
               <div className="row">
                 <div className="col-md-8 ">

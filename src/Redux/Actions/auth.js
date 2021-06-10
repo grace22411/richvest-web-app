@@ -18,7 +18,7 @@ import { endpoints } from "./endpoints";
 
 const token = localStorage.getItem("token");
 const user = localStorage.getItem("user");
-export const base_url = "https://richvest360api-dev-1.eba-dq6ar5m2.us-east-1.elasticbeanstalk.com/";
+export const base_url = "https://www.richvest.gq/";
 
 // load user
 export const loadUserService = (token) => async (dispatch) => {
@@ -125,7 +125,7 @@ export const accountSetup = (payload,page) => async (dispatch) => {
         dispatch({
           type: LOGIN_FAIL,
         });
-        console.log(err.response.data);
+        console.log(err);
       }
     });
 };
