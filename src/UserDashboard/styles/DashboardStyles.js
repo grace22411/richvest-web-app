@@ -2,6 +2,23 @@ import styled from "styled-components";
 
 export const Content= styled.div`
     padding: 4% 7% 4% 5%;
+    margin-top:100px;
+    @media only screen and (min-width: 320px) and (max-width: 720px) {
+      padding:3% 4% 90px 4%;
+      margin-top:75px;
+  }
+
+`
+export const MobileNavIcon = styled.div`
+    //display: none;
+    margin-bottom: 15px;
+    display: none;
+    @media only screen and (min-width: 320px) and (max-width: 720px) {
+    display: block;
+  }
+`
+export const Page= styled.div`
+
 `
 export const TabContainer = styled.div`
   margin-top: 30px;
@@ -156,7 +173,7 @@ export const ReferralContainer = styled.div`
   }
 `;
 export const ChartDiv = styled.div`
-    border: 1px solid #407BFF;
+    border: 1px solid #407BFF66;
   padding: 20px;
   margin-top: 20px;;
   width:100%;

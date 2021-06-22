@@ -90,41 +90,6 @@ export const loginService = (payload,logPage) => async (dispatch) => {
     }
 
     handleLogin()
-    // const res = await axios.post(
-    //   `${endpoints.login}`, payload,
-    //   config
-    // )
-    // .then(async(res) => {
-    //     dispatch(setAlert("Welcome", "success"));
-    // console.log(res);
-    // dispatch({
-    //   type: LOGIN_SUCCESS,
-    //   payload: res.data,
-    // });
-    // dispatch(loadUserService());
-    // console.log(res.data)
-    // await localStorage.setItem("user", JSON.stringify(res.data))
-    // logPage.redirect("/dashboard")
-    // })
-    // .catch ((err) => {
-    // if (
-    //   err.message === "Network Error" ||
-    //   err.message === "timeout of 0ms exceeded"
-    // ) {
-    //   dispatch({ type: SPINNER, payload: false });
-    //   dispatch(handleGeneralErrors(err.message));
-    //   dispatch({
-    //     type: LOGIN_FAIL,
-    //   });
-    // } else {
-    //   dispatch({ type: SPINNER, payload: false });
-    //   dispatch(handleGeneralErrors(err));
-    //   dispatch({
-    //     type: LOGIN_FAIL,
-    //   });
-    //   console.log(err);
-    // }
-//   })
 };
 
 //Account Setup

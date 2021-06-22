@@ -3,7 +3,9 @@ import styled from "styled-components";
 export const HeadWrap = styled.div`
   filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.1));
   height:120px;
- 
+  @media only screen and (min-width:321px) and (max-width:600px){
+      display: none;
+  }
 `;
 export const Head = styled.div`
   clip-path: polygon(0 0, 100% 0, 100% 77%, 81% 95%, 32% 89%, 0 84%);
@@ -12,9 +14,11 @@ export const Head = styled.div`
   background-color: #fff;
   z-index:9999;
   filter:grayscale(0.1);
-  padding:20px 100px;@media only screen and (min-width:320px) and (max-width:420px){
+  padding:20px 100px;
+  @media only screen and (min-width:321px) and (max-width:600px){
       padding:20px 30px;
       height:120px;
+      display: none;
   }
 
 `;
@@ -110,8 +114,9 @@ export const WelcomeImage = styled.div`
       width:100%;
       height:100%;
     }
-    @media only screen and (min-width:320px) and (max-width:420px){
-      padding:20px 30px;
+    @media only screen and (min-width:320px) and (max-width:600px){
+      padding:50px 30px;
+      margin-bottom:20px;
       h2{
         font-size:20px;
       }
@@ -165,3 +170,8 @@ export const VerificationCode = styled.div`
       }
 `
 
+
+export const ForgotPasswordContainer = styled.div`
+  
+
+`

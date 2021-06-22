@@ -75,7 +75,7 @@ function SignUp({setAlert, accountSetup, isAuthenticated, loading}) {
                 <img src={business2} alt="A lady typing" />
                 </WelcomeImage>
           </div>
-          <div className="col-md-5 signup-form">
+          <div className="col-md-5 col-12 signup-form">
             <Form>
               <h3>Sign Up! </h3>
               <div className="form-group">

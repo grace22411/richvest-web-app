@@ -55,7 +55,7 @@ const Login = ({ loginService, isAuthenticated, loading, setAlert }) => {
           <div className="col-md-7">
             <img src={loginImage} alt="A lady typing" />
           </div>
-          <div className="col-md-5">
+          <div className="col-md-5 col-12">
             <Form>
               <h3>Glad you are back! </h3>
               <p>Continue your journey to 360 financial growth.</p>

@@ -4,13 +4,12 @@ import { useHistory } from "react-router-dom";
 import Title from "../components/Title";
 
 import styled from "styled-components";
-// import { Doughnut } from 'react-chartjs-2';
-import { Content, ChartDiv } from "../styles/DashboardStyles";
+import { ChartDiv, Page } from "../styles/DashboardStyles";
 import { FaFacebook, FaWhatsapp, FaTwitter } from "react-icons/fa";
 import ReferralModal from "../components/RefferalComponents/Modal";
 import DonutChart from "react-donut-chart";
 import Layout from "../components/Layout";
-
+//import { ChartDonut } from '@patternfly/react-charts';
 //import { Form } from "../styles/ComponentStyles";
 
 const DashboardBits = styled.div`
@@ -31,105 +30,113 @@ const DashboardBits = styled.div`
       }
     }
   }
-  @media only screen and (min-width: 321px) and (max-width: 540px) {
+  @media only screen and (min-width: 321px) and (max-width: 600px) {
     .row {
       .col-md-4 {
         display: none;
       }
     }
   }
+  .summary{
+    overflow-y: hidden;
+      overflow-x: scroll !important;
+      height: auto;
+      white-space: nowrap;
+  }
+`;
+const DashboardBitsReferral = styled(DashboardBits)`
+  border: 1px solid #407bff66;
+  padding: 30px 20px;
 `;
 
 function MainDashboard() {
   const user = JSON.parse(localStorage.getItem("user"));
-  console.log(user)
+  console.log(user);
 
   const history = useHistory();
-  if(!user){
+  if (!user) {
     console.log("logout");
     history.push("/");
   }
 
   return (
     <>
-    {user && (
-      <Layout>
-        <Content>
-          <Title name={user.firstName} />
-          <div className="container">
-            <div className="row">
-              <div className="col-md-12 ">
-                <DashboardBits>
-                  <div className="row">
-                    <div className="col-md-3 col-6">
-                      <DashboardCard
-                        title="Wallet"
-                        colorOne="rgba(53,12,226,0.66)"
-                        colorTwo="rgba(72,0,255,0.66)"
-                        value="0.00"
-                      />
-                    </div>
-                    <div className="col-md-3 col-6">
-                      <DashboardCard
-                        title="Project Fund"
-                        colorOne="rgba(254,95,117,0.9)"
-                        colorTwo="rgba(252,152,66,0.9)"
-                        value="0.00"
-                      />
-                    </div>
-
-                    <div className="col-md-3 col-6">
-                      <DashboardCard
-                        title="Savings"
-                        colorOne="rgba(31,44,172,0.9)"
-                        colorTwo="rgba(18,37,219,0.9)"
-                        value="0.00"
-                      />
-                    </div>
-                    <div className="col-md-3 col-6">
-                      <DashboardCard
-                        title="Loan"
-                        colorOne="rgba(82,126,250,0.9)"
-                        colorTwo="rgba(17,80,255,0.9)"
-                        value="0.00"
-                      />
-                    </div>
-                  </div>
-                </DashboardBits>
-              </div>
+      {user && (
+        <Layout>
+          <Page>
+            <Title name={user.firstName} />
+            <div className="container">
               <div className="row">
-                <div className="col-md-8 ">
+                <div className="col-md-12 ">
+                  <DashboardBits>
+                    <div className="row summary">
+                      <div className="col-md-3">
+                        <DashboardCard
+                          title="Wallet"
+                          colorOne="rgba(53,12,226,0.66)"
+                          colorTwo="rgba(72,0,255,0.66)"
+                          value="0.00"
+                        />
+                      </div>
+                      <div className="col-md-3">
+                        <DashboardCard
+                          title="Project Fund"
+                          colorOne="rgba(254,95,117,0.9)"
+                          colorTwo="rgba(252,152,66,0.9)"
+                          value="0.00"
+                        />
+                      </div>
+
+                      <div className="col-md-3">
+                        <DashboardCard
+                          title="Savings"
+                          colorOne="rgba(31,44,172,0.9)"
+                          colorTwo="rgba(18,37,219,0.9)"
+                          value="0.00"
+                        />
+                      </div>
+                      <div className="col-md-3">
+                        <DashboardCard
+                          title="Loan"
+                          colorOne="rgba(82,126,250,0.9)"
+                          colorTwo="rgba(17,80,255,0.9)"
+                          value="0.00"
+                        />
+                      </div>
+                    </div>
+                  </DashboardBits>
+                </div>
+                <div className="col-md-8">
                   <ChartDiv>
                     <DonutChart
                       width={200}
                       height={200}
+                      
+                      colors={['#8655FF','#14D4EB','#1C2AB6','#356AFC']}
                       data={[
                         {
                           label: "Wallet",
                           value: 25,
-                          backgroundColor:"#8655FF"
+                          
                         },
                         {
                           label: "Investment",
                           value: 25,
-                          backgroundColor:"#14D4EB"
                         },
                         {
                           label: "Saving",
                           value: 25,
-                          backgroundColor:"#1C2AB6"
                         },
                         {
                           label: "Loan",
                           value: 25,
-                          backgroundColor:"#356AFC"
                         },
                       ]}
                     />
                   </ChartDiv>
                 </div>
                 <div className="col-md-4 ">
-                  <DashboardBits>
+                  <DashboardBitsReferral>
                     <div className="row">
                       <div className="col-md-4">
                         <div className="image">
@@ -155,14 +162,13 @@ function MainDashboard() {
                         </div>
                       </div>
                     </div>
-                  </DashboardBits>
+                  </DashboardBitsReferral>
                 </div>
               </div>
             </div>
-          </div>
-        </Content>
-      </Layout>
-    )}
+            </Page>
+        </Layout>
+      )}
     </>
   );
 }

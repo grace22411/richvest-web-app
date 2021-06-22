@@ -5,15 +5,14 @@ export const Head = styled.div`
   height: 100px;
   width: 100%;
   background-color: #fff;
-  //position: fixed;
-  z-index: 9999;
+  position: fixed;
+  z-index: 1;
   padding: 20px 100px;
   display: flex;
   box-shadow: 12px 12px 24px rgba(39, 78, 222, 0.2);;
   @media only screen and (min-width: 321px) and (max-width: 540px) {
-    padding: 20px 30px;
-    height: 100px;
-    position:static;
+    padding: 10px 30px;
+    height: 70px;
     clip-path: none;
 
   }
@@ -39,6 +38,13 @@ export const Profile = styled.div`
     font-weight:500;
     margin-top: 20px;;
     margin-right:15px;
+  }
+  @media only screen and (min-width: 321px) and (max-width: 600px) {
+    width:60%;
+    p{
+      margin-top: 12px;
+      margin-right:10px;
+    }
   }
 `
 export const PictureContainer = styled.div`
@@ -86,15 +92,15 @@ export const PictureContainer = styled.div`
       //position:absolute;
     }
   }
-  @media only screen and (min-width: 320px) and (max-width: 420px) {
-    top: 14px;
+  @media only screen and (min-width: 321px) and (max-width: 600px) {
+    top: 0px;
     right: 30px;
-    height:50px;
-    width:50px;
+    height:40px;
+    width:40px;
     background:#fff;
     .white-background{
-        height:50px;
-        width:50px;
+        height:40px;
+        width:40px;
         background: linear-gradient(
     241.94deg,
     #5ad5de 22.54%,
@@ -104,8 +110,8 @@ export const PictureContainer = styled.div`
         padding:5px;
     }
     .picture{
-        width:40px;
-        height:40px;
+        width:30px;
+        height:30px;
         .drop{
           margin-top: 30px;;
         }
@@ -139,15 +145,41 @@ export const HeadIcons = styled.div`
   }
 `;
 export const SideMenu = styled.aside`
-  height: calc(100vh - 120px);
+  height: calc(100vh - 100px);
   background-color: #191970;
   //position:fixed;
   width: 100%;
+  margin-top:100px;
   padding:50px 0 0  50px;
   @media only screen and (min-width: 320px) and (max-width: 720px) {
     display: none;
   }
 `;
+
+export const MobileSideMenu= styled(SideMenu)`
+    height: 100vh;
+    width:180px;
+    padding:0 20px;
+    margin-top: 0;
+    position: fixed;
+    top:0;
+    z-index:9999;
+    display: none;
+    bottom: 0;
+    .cancel{
+      height:70px;
+      padding:20px 0px;
+      text-align: right;
+      i{
+        color:#fff;
+        font-size:17px;
+      }
+    }
+    @media only screen and (min-width: 320px) and (max-width: 720px) {
+    display: block;
+  }
+`;
+
 export const MobileBottomMenu = styled.div`
     z-index:9999;
     position:fixed;
@@ -180,7 +212,6 @@ export const MobileBottomMenu = styled.div`
     }
     @media only screen and (min-width: 320px) and (max-width: 540px) {
         display: flex;
-
   }
 `;
 

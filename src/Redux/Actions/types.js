@@ -11,3 +11,7 @@ export const LOADING = "LOADING";
 export const SPINNER = "SPINNER";
 export const GENERAL_ERROR = "GENERAL_ERROR";
 export const USER_EMAIL_VERIFIED = "USER_EMAIL_VERIFIED";
+
+
+export const CREATE_STAFF = "CREATE_STAFF";
+export const GET_ALL_FUND = "GET_ALL_FUND";

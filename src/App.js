@@ -9,7 +9,6 @@ import setAuthToken from "./features/setAuthToken";
 import EmailVerification from "./Auth/EmailVerification";
 import SetPassword from "./Auth/SetPassword";
 import Dashboard from "./UserDashboard/pages/Dashboard";
-import Investment from "./UserDashboard/pages/Investment";
 import MiniInvestment from "./UserDashboard/pages/MiniInvestment";
 import AboutProduct from "./UserDashboard/pages/AboutProduct";
 import SourceFunding from "./UserDashboard/pages/SourceFunding";
@@ -19,6 +18,7 @@ import Refferal from "./UserDashboard/pages/Refferal";
 import Profile from "./UserDashboard/pages/Profile";
 import "antd/dist/antd.css";
 import { Provider } from "react-redux";
+import ProjectFund from "./UserDashboard/pages/ProjectFund";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -48,8 +48,8 @@ function App() {
         />
         <Route
           exact
-          path="/investment"
-          component={Investment}
+          path="/project-fund"
+          component={ProjectFund}
         />
         <Route
           exact
