@@ -30,7 +30,7 @@ function MainDashboard() {
       {/* {user && ( */}
         <Layout>
           <Page>
-            <Title name= /*{user.firstName}*/ "precious" />
+            <Title name= {user.firstName} />
             <div className="container">
               <div className="row">
                 <div className="col-md-12" style={{padding:'0'}}>

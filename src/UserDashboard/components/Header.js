@@ -26,7 +26,7 @@ function Header() {
 
 
       <Profile>
-      {/* <p> {user.fullname}</p> */}
+      <p> {user.fullname}</p>
       <PictureContainer>
         
          <div className="white-background">
