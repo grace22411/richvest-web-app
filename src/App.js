@@ -20,8 +20,8 @@ import "antd/dist/antd.css";
 import { Provider } from "react-redux";
 import ProjectFund from "./UserDashboard/pages/ProjectFund";
 
-if (localStorage.token) {
-  setAuthToken(localStorage.token);
+if (localStorage.user) {
+  setAuthToken(localStorage.user);
 }
 
 function App() {

@@ -147,8 +147,8 @@ export const HeadIcons = styled.div`
 export const SideMenu = styled.aside`
   height: calc(100vh - 100px);
   background-color: #191970;
-  //position:fixed;
-  width: 100%;
+  position:fixed;
+  width: 220px;
   margin-top:100px;
   padding:50px 0 0  50px;
   @media only screen and (min-width: 320px) and (max-width: 720px) {

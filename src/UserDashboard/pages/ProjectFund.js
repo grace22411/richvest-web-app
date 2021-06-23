@@ -4,6 +4,7 @@ import Layout from '../components/Layout'
 import PFModal from '../components/PFModal/PFModal'
 import { Page } from '../styles/DashboardStyles'
 import { TotalFund,TotalFundEntry } from '../styles/ProjectFundStyles'
+import wave from "../images/pfwave.svg"
 
 const ProjectFund = () => {
     return (
@@ -15,6 +16,7 @@ const ProjectFund = () => {
                     <div className="text-contained">
                         <h2>Total Project Fund</h2>
                         <p>0.00</p>
+                        <img src={wave} alt="" />
                     </div>
                 </TotalFund>
                 <PFModal />

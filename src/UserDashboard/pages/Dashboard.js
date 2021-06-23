@@ -4,50 +4,16 @@ import { useHistory } from "react-router-dom";
 import Title from "../components/Title";
 
 import styled from "styled-components";
-import { ChartDiv, Page } from "../styles/DashboardStyles";
+import { ChartDiv, Page, DashboardBits, DashboardBitsReferral } from "../styles/DashboardStyles";
 import { FaFacebook, FaWhatsapp, FaTwitter } from "react-icons/fa";
 import ReferralModal from "../components/RefferalComponents/Modal";
 import DonutChart from "react-donut-chart";
 import Layout from "../components/Layout";
+import {Link }from "react-router-dom"
 //import { ChartDonut } from '@patternfly/react-charts';
 //import { Form } from "../styles/ComponentStyles";
 
-const DashboardBits = styled.div`
-  border-radius: 10px;
-  padding-left: 20px;
-  margin-top: 20px;
-  .row {
-    .col-md-4 {
-      text-align: center;
-      .image {
-        width: 200px;
-        height: 250px;
-        text-align: center;
-        svg {
-          margin: 0px 10px;
-          size: 30px;
-        }
-      }
-    }
-  }
-  @media only screen and (min-width: 321px) and (max-width: 600px) {
-    .row {
-      .col-md-4 {
-        display: none;
-      }
-    }
-  }
-  .summary{
-    overflow-y: hidden;
-      overflow-x: scroll !important;
-      height: auto;
-      white-space: nowrap;
-  }
-`;
-const DashboardBitsReferral = styled(DashboardBits)`
-  border: 1px solid #407bff66;
-  padding: 30px 20px;
-`;
+
 
 function MainDashboard() {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -61,16 +27,16 @@ function MainDashboard() {
 
   return (
     <>
-      {user && (
+      {/* {user && ( */}
         <Layout>
           <Page>
-            <Title name={user.firstName} />
+            <Title name= /*{user.firstName}*/ "precious" />
             <div className="container">
               <div className="row">
-                <div className="col-md-12 ">
+                <div className="col-md-12" style={{padding:'0'}}>
                   <DashboardBits>
-                    <div className="row summary">
-                      <div className="col-md-3">
+                    <div className="summary">
+                      <div className="quick-col">
                         <DashboardCard
                           title="Wallet"
                           colorOne="rgba(53,12,226,0.66)"
@@ -78,16 +44,18 @@ function MainDashboard() {
                           value="0.00"
                         />
                       </div>
-                      <div className="col-md-3">
+                      <div className="quick-col">
+                        <Link to="/project-fund">
                         <DashboardCard
                           title="Project Fund"
                           colorOne="rgba(254,95,117,0.9)"
                           colorTwo="rgba(252,152,66,0.9)"
                           value="0.00"
                         />
+                        </Link>
                       </div>
 
-                      <div className="col-md-3">
+                      <div className="quick-col">
                         <DashboardCard
                           title="Savings"
                           colorOne="rgba(31,44,172,0.9)"
@@ -95,7 +63,7 @@ function MainDashboard() {
                           value="0.00"
                         />
                       </div>
-                      <div className="col-md-3">
+                      <div className="quick-col">
                         <DashboardCard
                           title="Loan"
                           colorOne="rgba(82,126,250,0.9)"
@@ -109,10 +77,10 @@ function MainDashboard() {
                 <div className="col-md-8">
                   <ChartDiv>
                     <DonutChart
-                      width={200}
-                      height={200}
-                      
-                      colors={['#8655FF','#14D4EB','#1C2AB6','#356AFC']}
+                      // width={220}
+                      // height={180}
+                      strokeColor= 'false'
+                      colors={['#356AFC','#1C2AB6','#FC9842','#8655FF']}
                       data={[
                         {
                           label: "Wallet",
@@ -168,7 +136,7 @@ function MainDashboard() {
             </div>
             </Page>
         </Layout>
-      )}
+      {/*)}*/}
     </>
   );
 }

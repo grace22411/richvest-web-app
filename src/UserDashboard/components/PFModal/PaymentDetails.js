@@ -20,6 +20,7 @@ const PaymentDetails = () => {
         <button onClick={showModal}>Review</button>
       <Modal
         title=""
+        
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}

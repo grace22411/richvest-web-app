@@ -6,6 +6,7 @@ export const endpoints = {
   login: `${base_url}User/Login`,
   //VerifyUserEmail: `${base_url}api/Auth/VerifyUserEmail`,
   AccountSetup: `${base_url}User/Register`,
+  totalProjectFund: `${base_url}ProjectFund/GetTotalUserFundById`,
   GetAllProjectFunds:`${base_url}ProjectFund`,
   CreateProjectFund: `${base_url}ProjectFund`
   //ChangePassword: `${base_url}api/Auth/ChangePassword`,

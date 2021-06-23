@@ -5,7 +5,7 @@ import { ImSwitch } from "react-icons/im";
 import { Link, NavLink } from "react-router-dom";
 import investment from "../images/investment-icon.svg";
 import savings from "../images/savings-icon.svg";
-import wallet from "../images/wallet-Icon.svg";
+import wallet from "../images/wallet-icon.svg";
 import loan from "../images/loan-icon.svg";
 import dashboard from "../images/dashboard-icon.svg";
 import refer from "../images/referral.svg";

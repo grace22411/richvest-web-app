@@ -29,7 +29,7 @@ const Title = ({name}) => {
   return (
     <Contain>
         <h3>Hello <span>{name}</span>  <img src={wave} alt="hand wave" /> </h3>
-        <p>Welcome,</p>
+        <p>Welcome</p>
    
     </Contain>
   );

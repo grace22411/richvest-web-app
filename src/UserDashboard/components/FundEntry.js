@@ -8,11 +8,11 @@ import { useDispatch, useSelector } from "react-redux";
 
 const FundEntry = (props) => {
     const dispatch = useDispatch();
-    const { funds } = useSelector((state) => state.projectFund)
+    const { funds }  = useSelector((state) => state.projectFund)
     useEffect(() => {
         dispatch(fetchAllProjectFundPaginated());
     }, []);
-    //console.log(funds)
+    console.log(funds)
     
 
       const columns = [
@@ -96,7 +96,7 @@ const FundEntry = (props) => {
     <div>
       <Table 
       columns={columns} 
-      dataSource={funds} 
+      dataSource={funds}
       pagination={true}
     rowClassName="table-space"
       />

@@ -16,15 +16,16 @@ import setAuthToken from "../../features/setAuthToken";
 import { handleGeneralErrors } from "../../SharedComponents.js/globalService/handleGeneralError.js";
 import { endpoints } from "./endpoints";
 import * as jwt from "jsonwebtoken"
+import userEvent from "@testing-library/user-event";
 
 const token = localStorage.getItem("token");
 const user = localStorage.getItem("user");
 export const base_url = "https://www.richvest.gq/";
 
 // load user
-export const loadUserService = (token) => async (dispatch) => {
-  if (token) {
-    setAuthToken(token);
+export const loadUserService = () => async (dispatch) => {
+  if (localStorage.user) {
+    setAuthToken(localStorage.user);
     dispatch({
       type: USER_LOADED,
     });
@@ -43,6 +44,8 @@ export function getUserFromLocalStorage(token) {
     let user = jwt.verify(token, secret)
     return user;
 }
+
+
 //login user
 export const loginService = (payload,logPage) => async (dispatch) => {
 

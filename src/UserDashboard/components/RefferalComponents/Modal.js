@@ -9,10 +9,13 @@ import ReferContent from "./ReferContent";
 const ReferImage = styled.img`
   object-fit: cover;
   width: 100%;
-  margin:auto !important;
+  margin:0 auto 20px auto !important;
   height: 70%;
   display:inline-block;
   cursor: pointer;
+  @media only screen and (min-width: 321px) and (max-width: 600px) {
+    width:70%;
+  }
 `;
 
 function ReferralModal() {

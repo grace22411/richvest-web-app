@@ -45,3 +45,10 @@ body {
 /* .active{
   background-color: #fff;
 } */
+
+.donutchart-innertext{
+  display: none;
+}
+.donutchart-legend-item{
+  margin-bottom: 20px !important;
+}

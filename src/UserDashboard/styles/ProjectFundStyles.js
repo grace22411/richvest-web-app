@@ -32,9 +32,17 @@ export const TotalFund = styled.div`
     border-radius: 10px 10px 5px 5px;
     margin: -10px auto 0 auto;
     color: #fff;
+    position: relative;
     h2 {
       font-size: 18px;
       color: #fff;
+      margin-top: 20px;
+    }
+    img {
+      object-fit: cover;
+      bottom: 0;
+      width: 100%;
+      position: absolute;
     }
   }
 `;
@@ -97,6 +105,13 @@ export const TotalFundEntry = styled.div`
 export const FirstStep = styled.div`
   padding: 15px 20px;
   text-align: center;
+  .terms {
+    text-align: left;
+    font-size: 11px;
+    color: #191970;
+    font-weight: 500;
+    margin-top: 20px;
+  }
   .title {
     text-align: center;
     img {
@@ -113,7 +128,7 @@ export const FirstStep = styled.div`
     text-align: left;
     .form-group {
       margin-bottom: 20px;
-      label {
+      span {
         font-size: 0.9em;
         font-weight: 500;
         color: #32427c;
@@ -131,9 +146,15 @@ export const FirstStep = styled.div`
         border-radius: 10px;
         outline: none !important;
       }
-      input[value^="13%"] {
-        font-size: 15px;
-        color: #32427c;
+      .duration-range {
+        height: 15px !important;
+        background: red;
+      }
+      .duration-range::-webkit-slider-thumb {
+        background: red;
+        height: 30px;
+        width: 30px;
+        -webkit-appearance: none;
       }
     }
   }
@@ -223,5 +244,73 @@ export const FirstStep = styled.div`
         font-size: 0.7em;
       }
     }
+  }
+`;
+
+export const TermAndCondition = styled.div`
+  text-align: left;
+  .form-group {
+    font-size: 12px;
+    display:flex;
+    input[type="checkbox"] {
+      height: 0;
+      width: 0;
+      visibility: hidden;
+    }
+
+    label {
+      cursor: pointer;
+     text-indent: -9999px;
+      width: 50px;
+      margin-right:10px;
+      height: 20px;
+      background:#fff;
+      box-shadow:inset 1px 1px 10px rgba(55,83,111,0.2);
+      display: block;
+      border-radius: 100px;
+      position: relative;
+    }
+
+    label:after {
+      content: "";
+      position: absolute;
+      top: 7.5px;
+      left: 5px;
+      width: 38px;
+      height: 5px;
+      background: #A8A8A878;
+      border-radius: 90px;
+      transition: 0.3s;
+    }
+    label:before{
+      content: "";
+      position: absolute;
+      top: 4.8px;
+      left: 5px;
+      width: 10px;
+      height: 10px;
+      background: #0354CE;
+      border-radius: 90px;
+      transition: 0.3s;
+      z-index:2;
+    }
+
+    input:checked + label:after {
+      background: #0354CE;
+    }
+
+    input:checked + label:before {
+      left: calc(100% - 5px);
+      transform: translateX(-100%);
+    }
+
+    /* label:active:after {
+      width: 130px;
+    } */
+  }
+  select {
+    width: 100%;
+    padding-left: 10px;
+    height: 40px;
   }
 `;

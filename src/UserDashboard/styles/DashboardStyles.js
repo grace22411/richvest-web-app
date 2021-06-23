@@ -4,7 +4,7 @@ export const Content= styled.div`
     padding: 4% 7% 4% 5%;
     margin-top:100px;
     @media only screen and (min-width: 320px) and (max-width: 720px) {
-      padding:3% 4% 90px 4%;
+      padding:3% 2% 90px 2%;
       margin-top:75px;
   }
 
@@ -20,6 +20,56 @@ export const MobileNavIcon = styled.div`
 export const Page= styled.div`
 
 `
+
+export const DashboardBits = styled.div`
+  border-radius: 10px;
+  padding-left: 20px;
+  margin-top: 20px;
+  .row {
+    .col-md-4 {
+      text-align: center;
+      .image {
+        width: 200px;
+        height: 250px;
+        text-align: center;
+        svg {
+          margin: 0px 10px;
+          size: 30px;
+        }
+      }
+    }
+    
+  }
+  .summary{
+      //width:100%;
+      overflow-y: hidden;
+      overflow-x: scroll;
+      height: auto;
+      white-space: nowrap;
+      .quick-col{
+        width:230px;
+        height:auto;
+        display: inline-block;
+      }
+      ::-webkit-scrollbar {
+      display: none;
+    }
+    }
+  @media only screen and (min-width: 321px) and (max-width: 600px) {
+    .row {
+     .col-md-4{
+      .image{
+        margin:auto;
+      }
+     }
+    }
+  }
+ 
+`;
+export const DashboardBitsReferral = styled(DashboardBits)`
+  border: 1px solid #407bff66;
+  padding: 30px 20px;
+`;
 export const TabContainer = styled.div`
   margin-top: 30px;
   padding-right: 45px;

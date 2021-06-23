@@ -1,9 +1,11 @@
 import {
     GET_ALL_FUND,
+    LOADING,
   } from "../Actions/types";
   
   const initialState = {
     funds: [],
+    loading:true
   };
   
 const projuctFundReducer = (state = initialState, handler) => {
@@ -14,7 +16,8 @@ const projuctFundReducer = (state = initialState, handler) => {
             console.log(payload);
             return{
                 ...state,
-                funds: payload
+                funds: payload,
+                loading: false,
             }
            
         default:
