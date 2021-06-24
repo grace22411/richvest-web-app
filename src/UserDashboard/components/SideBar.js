@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { IconContext } from "react-icons";
 //import { IoPersonOutline } from "react-icons/io";
-import { ImSwitch } from "react-icons/im";
 import { Link, NavLink } from "react-router-dom";
 import investment from "../images/investment-icon.svg";
 import savings from "../images/savings-icon.svg";
