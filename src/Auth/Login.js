@@ -87,7 +87,7 @@ const Login = ({ loginService, isAuthenticated, loading, setAlert }) => {
                 />
 
                 <p>
-                  <Link to="/emailverification">Forgot Password?</Link>
+                  <Link to="/forgotPassword">Forgot Password?</Link>
                 </p>
               </div>
               <button

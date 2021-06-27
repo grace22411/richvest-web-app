@@ -23,3 +23,23 @@ export const setAlert = (msg, alertType) => (dispatch) => {
     }, 4000);
   }
 };
+
+// export const setAlertConfirm = (msg, alertType) => (dispatch) => {
+//   const id = uuid();
+//   if (alertType !== cautionType && alertMessage !== msg) {
+//     dispatch({
+//       type: SET_ALERT,
+//       payload: { msg, alertType, id },
+//     });
+//     cautionType = alertType;
+//     alertMessage = msg;
+//     setTimeout(() => {
+//       cautionType = "";
+//       alertMessage = "";
+//       dispatch({
+//         type: REMOVE_ALERT,
+//         payload: id,
+//       });
+//     }, 50000);
+//   }
+// };

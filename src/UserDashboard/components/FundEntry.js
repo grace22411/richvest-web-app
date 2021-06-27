@@ -43,7 +43,7 @@ const FundEntry = (props) => {
           key: "duration",
           render: (duration) => (
             <>
-              <span>{duration} Months</span>
+              <span>{duration} Month(s)</span>
             </>
           ),
         },

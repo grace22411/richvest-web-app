@@ -4,13 +4,13 @@ export const base_url = "https://www.richvest.gq/";
 export const endpoints = {
   //Auth module
   login: `${base_url}User/Login`,
-  //VerifyUserEmail: `${base_url}api/Auth/VerifyUserEmail`,
+  VerifyUserEmail: `${base_url}User/VerifyEmail`,
   AccountSetup: `${base_url}User/Register`,
   totalProjectFund: `${base_url}ProjectFund/GetTotalUserFundById`,
   GetAllProjectFunds:`${base_url}ProjectFund`,
-  CreateProjectFund: `${base_url}ProjectFund`
-  //ChangePassword: `${base_url}api/Auth/ChangePassword`,
-  //SendMail: `${base_url}api/Auth/ResetPassword/SendMail`,
+  CreateProjectFund: `${base_url}ProjectFund`,
+  ResetPassword: `${base_url}User/ResetPassword`,
+  SendMail: `${base_url}User/ForgotPassword`,
   //SetNewPassword: `${base_url}api/Auth/ResetPassword/SetNewPassword`,
   //ResendUserEmailVerificationLink: `${base_url}api/Auth/ResendUserEmailVerificationLink`,
 }

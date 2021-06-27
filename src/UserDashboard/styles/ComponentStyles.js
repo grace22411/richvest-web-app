@@ -113,7 +113,12 @@ export const PictureContainer = styled.div`
         width:30px;
         height:30px;
         .drop{
-          margin-top: 30px;;
+          margin-top: 20px;;
+          width:15px;
+      height:15px;
+      svg{
+        margin-top:-4px;
+      }
         }
     }
   }
@@ -364,7 +369,10 @@ export const Form = styled.form`
     input {
       background-color: #d8e1f8;
       border: none;
+      height:35px;
+      width:100%;
       border-radius: 10px;
+      font-size:13px;
       outline: none !important;
       ::placeholder {
         font-size: 11px;

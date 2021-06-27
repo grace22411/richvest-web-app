@@ -1,20 +1,25 @@
-import React, { useState, useEffect } from "react";
-import { Modal } from "antd";
+import React, { useState } from "react";
+import { Modal, Spin, Button } from "antd";
+import { useDispatch } from "react-redux";
+import { setAlert } from "../../../Redux/Actions/alert";
+import { createFund } from "../../../Redux/Actions/project-fund-mgt";
+import logo from "../../images/logo.png";
 import {
   CreateNewPlan,
   FirstStep,
   TermAndCondition,
 } from "../../styles/ProjectFundStyles";
-import logo from "../../images/logo.png";
-import { createFund } from "../../../Redux/Actions/project-fund-mgt";
-import { useDispatch, useSelector } from "react-redux";
-import { Spin } from "antd";
-import { connect } from "react-redux";
+import moment from "moment";
 
-const PFModal = ({ loading }) => {
+import PaymentDetails from "./PaymentDetails";
+
+const PFModal = () => {
   //Get the form values
+
+  const [showPayment, setShowPayment] = useState(false);
+
   const [form, setForm] = useState({
-    duration: 1,
+    duration: 4,
     amount: 0,
     projectTitle: "",
     roi: 3,
@@ -34,41 +39,45 @@ const PFModal = ({ loading }) => {
     returns,
   } = form || {};
 
-  const dispatch = useDispatch();
-  //Create a new project fund
-  
-  useEffect(() => {
-    console.log(new Date().getMonth())
-    setForm({...form, maturityDate: () =>
-    new Date(new Date().setMonth(new Date().getMonth() + duration))})
-    
-  }, [duration])
-
-  const OnSubmitForm = (e) => {
-    const user = JSON.parse(localStorage.getItem('user'))
-    e.preventDefault();
-    const payload = {
-      userId:user?.userId,
-      projectTitle,
-      duration,
-      amount,
-      roi,
-      returns: newReturns,
-      startDate: new Date(),
-      maturityDate: maturityDate(),
-    };
-    <Spin />
-    console.log(payload);
-    dispatch(createFund(payload));
-  };
-
   //Review Modal
   const Review = () => {
     const [isModalVisible, setIsModalVisible] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+
+    const handleLoading = () => {
+      setIsLoading(true);
+    };
+
+    //Create a new project fund
+    const dispatch = useDispatch();
+
+    const OnSubmitForm = async (e) => {
+      const user = JSON.parse(localStorage.getItem("user"));
+      e.preventDefault();
+      handleLoading();
+      const payload = {
+        userId: user?.userId,
+        projectTitle,
+        duration,
+        amount,
+        roi,
+        returns: newReturns,
+        startDate: new Date(),
+        maturityDate: maturityDate(),
+      };
+      await dispatch(createFund(payload));
+      handleOk();
+    };
 
     const showModal = () => {
-      closeModal()
-      setIsModalVisible(true);
+      if (amount < 20000) {
+        dispatch(setAlert("Amount cannot be less than 20,000", "error"));
+      } else {
+        closeModal();
+        setIsModalVisible(true);
+        // setForm({...form, maturityDate: () =>
+        //   new Date(new Date().setMonth(new Date().getMonth() + duration))})
+      }
     };
 
     const handleOk = () => {
@@ -78,6 +87,40 @@ const PFModal = ({ loading }) => {
     const handleCancel = () => {
       setIsModalVisible(false);
     };
+
+
+  //Show Payment details modal
+  const PaymentDetails = () => {
+    const [isModalVisible, setIsModalVisible] = useState(false);
+
+    const showModal = () => {
+        setIsModalVisible(true);
+      };
+    
+      const handleCancel = () => {
+        setIsModalVisible(false);
+      };
+    return (
+        <>
+        <button onClick={showModal}>Review</button>
+      <Modal
+        title=""
+        
+        visible={isModalVisible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <FirstStep>
+          <div className="title">
+            <h2>Project Fund</h2>
+          </div>
+          
+        </FirstStep>
+      </Modal>
+        </>
+    )
+}
+
     return (
       <>
         <button onClick={showModal}>Review</button>
@@ -104,7 +147,7 @@ const PFModal = ({ loading }) => {
                   <h4>{duration} Month(s)</h4>
                 </div>
                 <div className="col-md-6 col-6">
-                  <p>Roi</p>
+                  <p>Returns(%)</p>
                   <h4>{roi}</h4>
                 </div>
                 <div className="col-md-6 col-6">
@@ -121,37 +164,47 @@ const PFModal = ({ loading }) => {
                 </div>
               </div>
             </div>
-            
-          
-          <p className="terms">Read terms and conditions</p>
-          <TermAndCondition>
-            <div className="form-group">
-              <input type="checkbox" id="switch"/>
-              <label for="switch" class="slider round"></label>
-              <span>
-                I have read, understood and I agree to the terms and conditions.{" "}
-              </span>
-            </div>
-            {/* <select disabled>
+
+            <p className="terms">Read terms and conditions</p>
+            <TermAndCondition>
+              <div className="form-group">
+                <input type="checkbox" id="switch" />
+                <label for="switch" class="slider round"></label>
+                <span>
+                  I have read, understood and I agree to the terms and
+                  conditions.{" "}
+                </span>
+              </div>
+              {/* <select disabled>
               <option value="" default>Transfer</option>
               <option value="">Wallet</option>
               <option value="">Card</option>
             </select> */}
-          </TermAndCondition>
-          <button onClick={OnSubmitForm, <Spin />}>
-              Create Plan 
+            </TermAndCondition>
+            {/* <Button  loading={isLoading}></Button> */}
+            <button onClick={OnSubmitForm}>
+              Create Plan
+              {isLoading && <Spin />}
             </button>
-            </FirstStep>
+          </FirstStep>
         </Modal>
       </>
     );
   };
 
 
+
+
+
+
+
+
+
   //Create fund visible
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handleChange = (e) => {
+    e.preventDefault();
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
@@ -218,14 +271,14 @@ const PFModal = ({ loading }) => {
                 aria-describedby="emailHelp"
                 name="duration"
                 onChange={handleChange}
-                min="1"
+                min="4"
                 max="12"
                 value={duration}
                 step="1"
               />
             </div>
             <div className="form-group">
-              <label>Roi</label>
+              <label>Returns</label>
               <input
                 type="number"
                 className="form-control"
@@ -244,8 +297,9 @@ const PFModal = ({ loading }) => {
             </div>
             <div className="text">
               <p>
-                At the end of {duration} months you would have earned{" "}
-                <span>{roi}%</span> returns on <span>{amount}</span>{" "}
+                At the end of {duration} month(s) you would have earned{" "}
+                <span>{roi}%</span> returns on{" "}
+                <span>{amount.toLocaleString("en-US")}</span>{" "}
               </p>
               <p style={{ fontWeight: "600" }}>Sounds Awesome!</p>
             </div>

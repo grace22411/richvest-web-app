@@ -45,6 +45,10 @@ function SignUp({setAlert, accountSetup, isAuthenticated, loading}) {
       password: password,
       referralCode:referralCode
     });
+    // if (emailAddress < ) {
+    //   setAlert(`Email Address is required`, "error");
+    //   return;
+    // }
 
     accountSetup(payload, {redirect: (url) => history.replace(url)});
     

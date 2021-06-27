@@ -172,6 +172,30 @@ export const VerificationCode = styled.div`
 
 
 export const ForgotPasswordContainer = styled.div`
-  
+  width:30%;
+  margin: auto;
+  text-align: center;
+  .forgetPasswordImage{
+    margin-top: 40px;
+    img{
+      width:120px;
+    }
+  }
+  h2{
+    color:#32427C;
+    font-size:20px;
+  }
+  p{
+    font-size:12px;
+  }
+  button{
+    width:100% !important;
+    border:none;
+    height:30px;
+    margin-top:30px;
+  }
+  @media only screen and (min-width: 320px) and (max-width: 420px) {
+    width:95%;
+  }
 
 `

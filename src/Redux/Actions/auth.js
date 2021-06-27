@@ -10,7 +10,7 @@ import {
   LOGOUT,
   USER_EMAIL_VERIFIED,
 } from "./types";
-import { setAlert } from "./alert";
+import { setAlert, setAlertConfirm } from "./alert";
 import { Link, Redirect } from "react-router-dom";
 import setAuthToken from "../../features/setAuthToken";
 import { handleGeneralErrors } from "../../SharedComponents.js/globalService/handleGeneralError.js";
@@ -119,6 +119,7 @@ export const accountSetup = (payload,page) => async (dispatch) => {
 
       await localStorage.setItem("user", JSON.stringify(data))
       page.redirect("/dashboard")
+      //dispatch(setAlertConfirm("Please check your mail to verify your account",'error'));
     })
     .catch((err) => {
       if (
@@ -153,7 +154,7 @@ export const resetPassword = (payload) => async (dispatch) => {
   try {
     console.log(payload);
     dispatch({ type: SPINNER, payload: true });
-    const res = await axios.post(`${endpoints.SendMail}`, payload, config);
+    const res = await axios.get(`${endpoints.SendMail}`, config);
     dispatch({ type: SPINNER, payload: false });
     dispatch(setAlert("Password reset link has been sent to your mail"));
     console.log(res.data);
@@ -232,13 +233,13 @@ export const logoutService = () => (dispatch) => {
 };
 
 // Verify User Email address
-export const VerifyUserEmail = (emailToken) => async (dispatch) => {
+export const VerifyUserEmail = (token) => async (dispatch) => {
   dispatch({ type: SPINNER, payload: true });
   const data = {
-    emailConfirmationLinkToken: emailToken,
+    emailConfirmationLinkToken: token,
   };
   axios
-    .post(endpoints.VerifyUserEmail, data)
+    .get(endpoints.VerifyUserEmail, data)
     .then((res) => {
       dispatch({ type: SPINNER, payload: false });
       dispatch(setAlert("Email Address Confirmed", "success"));

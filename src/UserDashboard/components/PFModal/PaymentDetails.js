@@ -1,5 +1,6 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Modal } from "antd";
+import { FirstStep } from '../../styles/ProjectFundStyles';
 
 const PaymentDetails = () => {
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -27,7 +28,6 @@ const PaymentDetails = () => {
       >
         <FirstStep>
           <div className="title">
-            <img src={logo} alt="richvest logo" />
             <h2>Project Fund</h2>
           </div>
           

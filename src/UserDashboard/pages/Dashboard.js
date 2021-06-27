@@ -19,18 +19,18 @@ function MainDashboard() {
   const user = JSON.parse(localStorage.getItem("user"));
   console.log(user);
 
-  const history = useHistory();
-  if (!user) {
-    console.log("logout");
-    history.push("/");
-  }
+  // const history = useHistory();
+  // if (!user) {
+  //   console.log("logout");
+  //   history.push("/");
+  // }
 
   return (
     <>
       {/* {user && ( */}
         <Layout>
           <Page>
-            <Title name= {user.firstName} />
+            <Title name={user.firstName} />
             <div className="container">
               <div className="row">
                 <div className="col-md-12" style={{padding:'0'}}>

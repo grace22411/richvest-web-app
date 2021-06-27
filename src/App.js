@@ -7,7 +7,8 @@ import Alert from "../src/SharedComponents.js/globalService/Alert";
 import setAuthToken from "./features/setAuthToken";
 
 import EmailVerification from "./Auth/EmailVerification";
-import SetPassword from "./Auth/SetPassword";
+import ForgotPassword from "./Auth/ForgotPassword";
+import ConfirmPassword from "./Auth/ResetPassword";
 import Dashboard from "./UserDashboard/pages/Dashboard";
 import MiniInvestment from "./UserDashboard/pages/MiniInvestment";
 import AboutProduct from "./UserDashboard/pages/AboutProduct";
@@ -38,8 +39,8 @@ function App() {
           <Route exact path="/" component={Login} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/emailverification" component={EmailVerification} />
-          <Route exact path="/setPassword" component={SetPassword} />
-
+          <Route exact path="/forgotPassword" component={ForgotPassword} />
+          <Route exact path="/resetPassword" component={ConfirmPassword} />
           
           <Route
           exact

@@ -3,6 +3,7 @@ import { Menu, Dropdown } from "antd";
 import { Link, useHistory, Redirect } from "react-router-dom";
 import { DownOutlined, UserOutlined, EditOutlined } from "@ant-design/icons";
 import { logoutService } from "../../Redux/Actions/auth";
+import { useDispatch } from "react-redux";
 
 const style = {
   color: "#32427c",
@@ -32,9 +33,10 @@ const menuProile = (
 
 export function DropdownMenu() {
   const history = useHistory();
+  const dispatch = useDispatch()
   const logOut = () => {
     history.push('/');
-    logoutService();
+    dispatch(logoutService());
   };
 
   const menu = (
@@ -45,7 +47,7 @@ export function DropdownMenu() {
         </Link>
       </Menu.Item>
       <Menu.Item key="1">
-        <Link style={style} onClick={() => logOut()} to="#">
+        <Link style={style} onClick={() => logOut()}>
           Sign Out
         </Link>
       </Menu.Item>
