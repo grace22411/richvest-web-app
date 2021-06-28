@@ -150,7 +150,6 @@ export const resetPassword = (payload) => async (dispatch) => {
     },
   };
    const params = {
-    
     emailAddress:payload.emailAddress
   };
 
@@ -158,9 +157,9 @@ export const resetPassword = (payload) => async (dispatch) => {
   try {
     console.log(payload);
     dispatch({ type: SPINNER, payload: true });
-    const res = await axios.get(`${endpoints.SendMail}`, {params,}, config);
+    const res = await axios.get(`${endpoints.SendMail}`, {params}, config);
     dispatch({ type: SPINNER, payload: false });
-    dispatch(setAlert("Password reset link has been sent to your mail"));
+    dispatch(setAlert(res.data.message));
     console.log(res.data);
   } catch (err) {
     if (
@@ -184,7 +183,7 @@ export const resetPassword = (payload) => async (dispatch) => {
 };
 
 //confirm reset password from mail
-export const confirmPassword = (payload) => async (dispatch) => {
+export const confirmPasswordNew = (payload,goLogPage) => async (dispatch) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -196,18 +195,19 @@ export const confirmPassword = (payload) => async (dispatch) => {
     console.log(payload);
     dispatch({ type: SPINNER, payload: true });
     const res = await axios.post(
-      `${endpoints.SetNewPassword}`,
+      `${endpoints.ResetPassword}`,
       payload,
       config
     );
     dispatch({ type: SPINNER, payload: false });
-    dispatch(setAlert("Welcome", "success"));
+    dispatch(setAlert("Password changed successfully", "success"));
     console.log(res.data);
-    dispatch({
-      type: LOGIN_SUCCESS,
-      payload: res.data,
-    });
-    dispatch(loadUserService());
+    goLogPage.redirect('/')
+    // dispatch({
+    //   type: LOGOUT,
+    //   payload: res.data,
+    // });
+    // dispatch(loadUserService());
   } catch (err) {
     if (
       err.message === "Network Error" ||
@@ -224,7 +224,7 @@ export const confirmPassword = (payload) => async (dispatch) => {
       dispatch({
         type: LOGIN_FAIL,
       });
-      console.log(err.response.data);
+      console.log(err);
     }
   }
 };

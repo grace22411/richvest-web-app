@@ -24,8 +24,11 @@ function SignUp({setAlert, accountSetup, isAuthenticated, loading}) {
   const onFormChange = (e) => {
     setuserDetail({...userDetail, [e.target.name]: e.target.value});
   };
-  const onSubmitForm = (e) => {
+  const onSubmitForm = async(e) => {
     e.preventDefault();
+    if (password.length < 8) {
+      setAlert('Minimum of 8 characters and should contain letters and numbers','error') ;
+  }
     // if (NewPassword != NewPassword2) {
     //   setAlert('Password do not match', 'error');
     //   return;
@@ -45,6 +48,7 @@ function SignUp({setAlert, accountSetup, isAuthenticated, loading}) {
       password: password,
       referralCode:referralCode
     });
+   
     // if (emailAddress < ) {
     //   setAlert(`Email Address is required`, "error");
     //   return;
@@ -56,6 +60,8 @@ function SignUp({setAlert, accountSetup, isAuthenticated, loading}) {
   if (isAuthenticated) {
     return <Redirect to="/verifyEmail" />;
   }
+
+  
   
   // Redirect if logged in
   // if (isAuthenticated) {

@@ -5,24 +5,24 @@ import { Link, Redirect } from "react-router-dom";
 import { setAlert } from "../Redux/Actions/alert";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { confirmPassword } from "../Redux/Actions/auth";
-import { Form } from "../UserDashboard/styles/ComponentStyles";
-import { ForgotPasswordContainer } from "./GlobalCss";
+import { confirmPasswordNew } from "../Redux/Actions/auth";
+
+import { ForgotPasswordContainer, Form } from "./GlobalCss";
 
 const ConfirmPassword = ({
-  confirmPassword,
+  confirmPasswordNew,
   match,
   isAuthenticated,
   loading,
   setAlert,
 }) => {
-  const passwordResetLinkToken = match.params.id;
 
   const [formData, setFormData] = useState({
-    newPassword: "",
-    newPassword2: "",
+    token:"",
+    password: "",
+    confirmPassword: "",
   });
-  const { newPassword, newPassword2 } = formData;
+  const { password, confirmPassword , token} = formData;
 
   const onFormChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -35,53 +35,40 @@ const ConfirmPassword = ({
         return;
       }
     });
-    if (newPassword !== newPassword2) {
+    if (password !== confirmPassword) {
       setAlert("Password do not match", "error");
       return;
     }
     const payload = {
-      newPassword: newPassword,
-      passwordResetLinkToken: passwordResetLinkToken,
+      password: password,
+      confirmPassword:  confirmPassword,
+      token: token,
     };
     console.log(payload);
-    confirmPassword(payload);
+    confirmPasswordNew(payload);
   };
 
-  //   // Redirect if logged in
-  //   if (isAuthenticated) {
-  //     const userDetails = JSON.parse(localStorage.getItem('user'));
-  //     if (userDetails.userType === 1) {
-  //       // redirect to super admin dashboard
-  //       return <Redirect to="/admin" />;
-  //     } else if (userDetails.userType === 2) {
-  //       // redirect to admin dashboard
-  //       return <Redirect to="/admin" />;
-  //     } else if (userDetails.userType === 3) {
-  //       // redirect to staff dashboard
-  //       return <Redirect to="/staff" />;
-  //     } else if (userDetails.userType === 4) {
-  //       // redirect to student dashboard
-  //       return <Redirect to="/student" />;
-  //     }
-  //   }
+    // Redirect if logged in
+    if (isAuthenticated) {
+      return <Redirect to="/" />;
+    }
 
   return (
     <div>
       <Header />
 
       <ForgotPasswordContainer>
-        <Form>
+        <Form className="confirm-password">
           <h2>Reset Password</h2>
           <p>
           Kindly enter your reset code and new password       
           </p>
-
           <div className="form-group">
             <input
-              type="password"
-              placeholder="Enter New Password"
-              name="newPassword"
-              value={newPassword}
+              type="number"
+              placeholder="Enter code"
+              name="token"
+              value={token}
               onChange={(e) => onFormChange(e)}
             />
           </div>
@@ -89,8 +76,8 @@ const ConfirmPassword = ({
             <input
               type="password"
               placeholder="Enter New Password"
-              name="newPassword"
-              value={newPassword}
+              name="password"
+              value={password}
               onChange={(e) => onFormChange(e)}
             />
           </div>
@@ -98,8 +85,8 @@ const ConfirmPassword = ({
             <input
               type="password"
               placeholder="Confirm New Password"
-              name="newPassword2"
-              value={newPassword2}
+              name="confirmPassword"
+              value={confirmPassword}
               onChange={(e) => onFormChange(e)}
             />
           </div>
@@ -114,7 +101,7 @@ const ConfirmPassword = ({
   );
 };
 ConfirmPassword.propTypes = {
-  confirmPassword: PropTypes.func.isRequired,
+  confirmPasswordNew: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
 };
 
@@ -122,6 +109,6 @@ const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
   loading: state.auth.loading,
 });
-export default connect(mapStateToProps, { confirmPassword, setAlert })(
+export default connect(mapStateToProps, {confirmPasswordNew, setAlert })(
   ConfirmPassword
 );

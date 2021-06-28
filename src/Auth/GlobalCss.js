@@ -44,7 +44,10 @@ export const Form = styled.form`
     input {
       background-color: #d8e1f8;
       border: none;
+      width:100%;
+      height:35px;
       border-radius:10px;
+      padding-left:15px;
       outline: none !important;
       ::placeholder {
         font-size: 11px;

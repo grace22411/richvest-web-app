@@ -52,3 +52,7 @@ body {
 .donutchart-legend-item{
   margin-bottom: 20px !important;
 }
+
+.confirm-password button{
+    margin-top:0;
+}
