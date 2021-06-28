@@ -54,7 +54,7 @@ function SignUp({setAlert, accountSetup, isAuthenticated, loading}) {
     
   };
   if (isAuthenticated) {
-    return <Redirect to="/dashboard" />;
+    return <Redirect to="/verifyEmail" />;
   }
   
   // Redirect if logged in

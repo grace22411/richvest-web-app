@@ -89,37 +89,37 @@ const PFModal = () => {
     };
 
 
-  //Show Payment details modal
-  const PaymentDetails = () => {
-    const [isModalVisible, setIsModalVisible] = useState(false);
+//   //Show Payment details modal
+//   const PaymentDetails = () => {
+//     const [isModalVisible, setIsModalVisible] = useState(false);
 
-    const showModal = () => {
-        setIsModalVisible(true);
-      };
+//     const showModal = () => {
+//         setIsModalVisible(true);
+//       };
     
-      const handleCancel = () => {
-        setIsModalVisible(false);
-      };
-    return (
-        <>
-        <button onClick={showModal}>Review</button>
-      <Modal
-        title=""
+//       const handleCancel = () => {
+//         setIsModalVisible(false);
+//       };
+//     return (
+//         <>
+//         <button onClick={showModal}>Review</button>
+//       <Modal
+//         title=""
         
-        visible={isModalVisible}
-        onOk={handleOk}
-        onCancel={handleCancel}
-      >
-        <FirstStep>
-          <div className="title">
-            <h2>Project Fund</h2>
-          </div>
+//         visible={isModalVisible}
+//         onOk={handleOk}
+//         onCancel={handleCancel}
+//       >
+//         <FirstStep>
+//           <div className="title">
+//             <h2>Project Fund</h2>
+//           </div>
           
-        </FirstStep>
-      </Modal>
-        </>
-    )
-}
+//         </FirstStep>
+//       </Modal>
+//         </>
+//     )
+// }
 
     return (
       <>

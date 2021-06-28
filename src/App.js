@@ -20,6 +20,7 @@ import Profile from "./UserDashboard/pages/Profile";
 import "antd/dist/antd.css";
 import { Provider } from "react-redux";
 import ProjectFund from "./UserDashboard/pages/ProjectFund";
+import VerifyEmailPage from "./UserDashboard/pages/VerifyEmailPage";
 
 if (localStorage.user) {
   setAuthToken(localStorage.user);
@@ -38,35 +39,23 @@ function App() {
       
           <Route exact path="/" component={Login} />
           <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/emailverification" component={EmailVerification} />
+          {/* <Route exact path="/emailverification" component={EmailVerification} /> */}
           <Route exact path="/forgotPassword" component={ForgotPassword} />
           <Route exact path="/resetPassword" component={ConfirmPassword} />
-          
+          <Route exact path="/verifyEmail" component={VerifyEmailPage} />
+
           <Route
           exact
           path="/dashboard"
           component={Dashboard}
         />
+
         <Route
           exact
           path="/project-fund"
           component={ProjectFund}
         />
-        <Route
-          exact
-          path="/mini-investment"
-          component={MiniInvestment}
-        />
-        <Route
-          exact
-          path="/mini-investment/about-product"
-          component={AboutProduct}
-        />
-        <Route
-          exact
-          path="/mini-investment/source-funding"
-          component={SourceFunding}
-        />
+       
         <Route
           exact
           path="/refferal"

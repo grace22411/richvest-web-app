@@ -233,3 +233,27 @@ export const ChartDiv = styled.div`
     
     
 `;
+
+
+export const VerifyPage = styled.div`
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height:100vh;
+  width:100%;
+  
+  h3{
+    font-size:15px;
+    text-align:center;
+  }
+  button{
+    margin-top: 30px;
+    border: none;
+    background-color: #191970;
+    color: #fff;
+    border-radius: 10px;
+    padding: 5px 20px;
+  }
+  
+`

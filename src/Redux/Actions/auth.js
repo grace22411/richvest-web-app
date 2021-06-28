@@ -118,7 +118,7 @@ export const accountSetup = (payload,page) => async (dispatch) => {
       dispatch(loadUserService());
 
       await localStorage.setItem("user", JSON.stringify(data))
-      page.redirect("/dashboard")
+      page.redirect("/verifyEmail")
       //dispatch(setAlertConfirm("Please check your mail to verify your account",'error'));
     })
     .catch((err) => {

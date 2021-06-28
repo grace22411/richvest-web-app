@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { DashboardCard } from "../components/Cards";
 import { useHistory } from "react-router-dom";
 import Title from "../components/Title";
@@ -19,11 +19,14 @@ function MainDashboard() {
   const user = JSON.parse(localStorage.getItem("user"));
   console.log(user);
 
-  // const history = useHistory();
-  // if (!user) {
-  //   console.log("logout");
-  //   history.push("/");
-  // }
+  const history = useHistory();
+  useEffect(() => {
+    if (!user) {
+      console.log("logout");
+      history.push("/");
+    }
+  }, [])
+  
 
   return (
     <>

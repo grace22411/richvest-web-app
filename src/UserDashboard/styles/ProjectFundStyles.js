@@ -314,3 +314,4 @@ export const TermAndCondition = styled.div`
     height: 40px;
   }
 `;
+
