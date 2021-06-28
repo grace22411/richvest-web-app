@@ -149,12 +149,16 @@ export const resetPassword = (payload) => async (dispatch) => {
       "Content-Type": "application/json",
     },
   };
+   const params = {
+    
+    emailAddress:payload.emailAddress
+  };
 
   dispatch({ type: LOADING });
   try {
     console.log(payload);
     dispatch({ type: SPINNER, payload: true });
-    const res = await axios.get(`${endpoints.SendMail}`, payload, config);
+    const res = await axios.get(`${endpoints.SendMail}`, {params,}, config);
     dispatch({ type: SPINNER, payload: false });
     dispatch(setAlert("Password reset link has been sent to your mail"));
     console.log(res.data);
