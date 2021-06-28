@@ -26,6 +26,7 @@ const ForgotPassword = ({ resetPassword, loading, setAlert }) => {
     console.log(emailAddress);
     const payload = { emailAddress: emailAddress };
     resetPassword(payload);
+    console.log(payload)
   };
   return (
     <div>

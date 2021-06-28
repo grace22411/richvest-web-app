@@ -33,7 +33,7 @@ const FundEntry = (props) => {
           key: "amount",
           render: (amount) => (
             <>
-              <span>{amount}</span>
+              <span>{amount.toLocaleString('en-NG', {style: 'currency', currency:'NGN'})}</span>
             </>
           ),
         },
@@ -53,7 +53,7 @@ const FundEntry = (props) => {
           key: "returns",
           render: (roi) => (
             <>
-              <span>{roi}</span>
+              <span>{roi.toLocaleString('en-NG', {style: 'currency', currency:'NGN'})}</span>
               <br />
             </>
           ),

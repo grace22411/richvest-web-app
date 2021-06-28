@@ -1,5 +1,5 @@
 import axios from "axios";
-import { LOADING, SPINNER, GET_ALL_FUND } from "./types";
+import { LOADING, SPINNER, GET_ALL_FUND, CREATE_FUND_SUCCESS, CREATE_FUND_PENDING, CREATE_FUND_FAILED } from "./types";
 import setAuthToken from "../../features/setAuthToken";
 import { handleGeneralErrors } from "../../SharedComponents.js/globalService/handleGeneralError.js";
 import { endpoints } from "./endpoints";
@@ -46,16 +46,18 @@ export const createFund = (payload) => async (dispatch) => {
   };
   dispatch({ type: LOADING });
 
+  dispatch({ type: CREATE_FUND_PENDING });
   dispatch({ type: SPINNER, payload: true });
   await axios
     .post(`${endpoints.CreateProjectFund}`, payload, config)
     .then((res) => {
+      dispatch({ type: CREATE_FUND_SUCCESS });
       dispatch(setAlert("Fund Created", "success"));
       dispatch(fetchAllProjectFundPaginated());
-      console.log(res.data);
     })
     .catch((err) => {
       dispatch(handleGeneralErrors(err));
+      dispatch({ type: CREATE_FUND_FAILED });
     });
   dispatch({ type: SPINNER, payload: false });
 };

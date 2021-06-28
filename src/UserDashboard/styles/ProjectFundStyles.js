@@ -219,7 +219,22 @@ export const FirstStep = styled.div`
       }
     }
   }
-
+  .success{
+    text-align: left;
+    color:#191970;
+    li{
+      list-style-type:square;
+      font-size: 13px;
+      font-weight: 300;
+      margin-bottom: 15px;;
+    }
+    .foot{
+      font-size:11px;
+      font-weight: 300;
+      margin-top:20px
+      
+    }
+  }
   button {
     margin-top: 30px;
     border: none;

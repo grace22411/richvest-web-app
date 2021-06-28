@@ -154,7 +154,7 @@ export const resetPassword = (payload) => async (dispatch) => {
   try {
     console.log(payload);
     dispatch({ type: SPINNER, payload: true });
-    const res = await axios.get(`${endpoints.SendMail}`, config);
+    const res = await axios.get(`${endpoints.SendMail}`, payload, config);
     dispatch({ type: SPINNER, payload: false });
     dispatch(setAlert("Password reset link has been sent to your mail"));
     console.log(res.data);

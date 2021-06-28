@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal, Spin, Button } from "antd";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setAlert } from "../../../Redux/Actions/alert";
 import { createFund } from "../../../Redux/Actions/project-fund-mgt";
 import logo from "../../images/logo.png";
@@ -11,13 +11,11 @@ import {
 } from "../../styles/ProjectFundStyles";
 import moment from "moment";
 
-import PaymentDetails from "./PaymentDetails";
+import projuctFundReducer from "../../../Redux/Reducers/project-fund-mgt";
 
-const PFModal = () => {
-  //Get the form values
-
-  const [showPayment, setShowPayment] = useState(false);
-
+const PFModal = ({ isModalVisible, handleCancel }) => {
+  const dispatch = useDispatch();
+  const [currentView, setCurrentView] = useState("form");
   const [form, setForm] = useState({
     duration: 4,
     amount: 0,
@@ -25,184 +23,19 @@ const PFModal = () => {
     roi: 3,
     startDate: new Date(),
     returns: "",
-    maturityDate: () =>
-      new Date(new Date().setMonth(new Date().getMonth() + duration)),
   });
-
+  //Get the form values
   const {
     projectTitle,
     duration,
     roi,
     amount,
     startDate,
-    maturityDate,
     returns,
   } = form || {};
 
-  //Review Modal
-  const Review = () => {
-    const [isModalVisible, setIsModalVisible] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
 
-    const handleLoading = () => {
-      setIsLoading(true);
-    };
-
-    //Create a new project fund
-    const dispatch = useDispatch();
-
-    const OnSubmitForm = async (e) => {
-      const user = JSON.parse(localStorage.getItem("user"));
-      e.preventDefault();
-      handleLoading();
-      const payload = {
-        userId: user?.userId,
-        projectTitle,
-        duration,
-        amount,
-        roi,
-        returns: newReturns,
-        startDate: new Date(),
-        maturityDate: maturityDate(),
-      };
-      await dispatch(createFund(payload));
-      handleOk();
-    };
-
-    const showModal = () => {
-      if (amount < 20000) {
-        dispatch(setAlert("Amount cannot be less than 20,000", "error"));
-      } else {
-        closeModal();
-        setIsModalVisible(true);
-        // setForm({...form, maturityDate: () =>
-        //   new Date(new Date().setMonth(new Date().getMonth() + duration))})
-      }
-    };
-
-    const handleOk = () => {
-      setIsModalVisible(false);
-    };
-
-    const handleCancel = () => {
-      setIsModalVisible(false);
-    };
-
-
-//   //Show Payment details modal
-//   const PaymentDetails = () => {
-//     const [isModalVisible, setIsModalVisible] = useState(false);
-
-//     const showModal = () => {
-//         setIsModalVisible(true);
-//       };
-    
-//       const handleCancel = () => {
-//         setIsModalVisible(false);
-//       };
-//     return (
-//         <>
-//         <button onClick={showModal}>Review</button>
-//       <Modal
-//         title=""
-        
-//         visible={isModalVisible}
-//         onOk={handleOk}
-//         onCancel={handleCancel}
-//       >
-//         <FirstStep>
-//           <div className="title">
-//             <h2>Project Fund</h2>
-//           </div>
-          
-//         </FirstStep>
-//       </Modal>
-//         </>
-//     )
-// }
-
-    return (
-      <>
-        <button onClick={showModal}>Review</button>
-        <Modal
-          title=""
-          visible={isModalVisible}
-          onOk={handleOk}
-          onCancel={handleCancel}
-        >
-          <FirstStep>
-            <div className="title">
-              <img src={logo} alt="richvest logo" />
-              <h3>Project Fund</h3>
-            </div>
-            <div className="container-fluid">
-              <h3>{projectTitle}</h3>
-              <div className="row">
-                <div className="col-md-6 col-6">
-                  <p>Amount</p>
-                  <h4>{amount}</h4>
-                </div>
-                <div className="col-md-6 col-6">
-                  <p>Duration</p>
-                  <h4>{duration} Month(s)</h4>
-                </div>
-                <div className="col-md-6 col-6">
-                  <p>Returns(%)</p>
-                  <h4>{roi}</h4>
-                </div>
-                <div className="col-md-6 col-6">
-                  <p>Returns</p>
-                  <h4>{newReturns}</h4>
-                </div>
-                <div className="col-md-6 col-6">
-                  <p>Start Date</p>
-                  <h4>{startDate.toDateString()}</h4>
-                </div>
-                <div className="col-md-6 col-6">
-                  <p>End Date</p>
-                  <h4>{maturityDate().toDateString()}</h4>
-                </div>
-              </div>
-            </div>
-
-            <p className="terms">Read terms and conditions</p>
-            <TermAndCondition>
-              <div className="form-group">
-                <input type="checkbox" id="switch" />
-                <label for="switch" class="slider round"></label>
-                <span>
-                  I have read, understood and I agree to the terms and
-                  conditions.{" "}
-                </span>
-              </div>
-              {/* <select disabled>
-              <option value="" default>Transfer</option>
-              <option value="">Wallet</option>
-              <option value="">Card</option>
-            </select> */}
-            </TermAndCondition>
-            {/* <Button  loading={isLoading}></Button> */}
-            <button onClick={OnSubmitForm}>
-              Create Plan
-              {isLoading && <Spin />}
-            </button>
-          </FirstStep>
-        </Modal>
-      </>
-    );
-  };
-
-
-
-
-
-
-
-
-
-  //Create fund visible
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
+ 
   const handleChange = (e) => {
     e.preventDefault();
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -213,23 +46,22 @@ const PFModal = () => {
     ((parseInt(duration) * parseInt(roi)) / 100) * parseInt(amount);
   const newReturns = totalReturns + parseInt(amount);
 
-  //Show modal
-  const showModal = () => {
-    setIsModalVisible(true);
+  const proceedToReview = () => {
+    if (amount < 20000) {
+      dispatch(setAlert("Amount cannot be less than 20,000", "error"));
+    } else {
+      setCurrentView("preview");
+    }
   };
-  const closeModal = async () => {
-    await setIsModalVisible(false);
-  };
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
+
   return (
-    <>
-      <CreateNewPlan onClick={showModal}>
-        <i className="fas fa-plus"></i>
-        <p>Create New Plan</p>
-      </CreateNewPlan>
-      <Modal title="" visible={isModalVisible} onCancel={handleCancel}>
+    <Modal
+      title=""
+      visible={isModalVisible}
+      footer={null}
+      onCancel={handleCancel}
+    >
+      {currentView === "form" ? (
         <FirstStep>
           <div className="title">
             <img src={logo} alt="richvest logo" />
@@ -304,13 +136,153 @@ const PFModal = () => {
               <p style={{ fontWeight: "600" }}>Sounds Awesome!</p>
             </div>
           </div>
-          <Review />
+          <button onClick={proceedToReview}>Review</button>
         </FirstStep>
-      </Modal>
-    </>
+      ) : currentView === "preview" ? (
+        <Review form={form} setCurrentView={setCurrentView} />
+      ) : currentView === "success" ? (
+        <PaymentDetails />
+      ) : null}
+    </Modal>
   );
 };
 // const mapStateToProps = (state) => ({
 //   loading: state.projuctFundReducer.loading,
 // });
+
+
+
+//Review Modal
+const Review = ({ form, setCurrentView }) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const { projectFund } = useSelector(projuctFundReducer)
+  const { hasCreatedFunds, createFundsLoading } = projectFund;
+  const {
+    projectTitle,
+    duration,
+    roi,
+    amount,
+    startDate,
+    returns,
+  } = form || {};
+
+  useEffect(() => {
+    if (hasCreatedFunds) {
+      setCurrentView("success");
+    }
+  }, [hasCreatedFunds])
+
+  const totalReturns =
+    ((parseInt(duration) * parseInt(roi)) / 100) * parseInt(amount);
+  const newReturns = totalReturns + parseInt(amount);
+
+  const handleLoading = () => {
+    setIsLoading(true);
+  };
+
+  //Create a new project fund
+  const dispatch = useDispatch();
+  const maturityDate = moment().add(duration, 'M')
+  const OnSubmitForm = async (e) => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    e.preventDefault();
+    handleLoading();
+    const payload = {
+      userId: user?.userId,
+      projectTitle,
+      duration,
+      amount,
+      roi,
+      returns: newReturns,
+      startDate: new Date(),
+      maturityDate,
+    };
+    await dispatch(createFund(payload));
+  };
+
+  return (
+    <FirstStep>
+      <div className="title">
+        <img src={logo} alt="richvest logo" />
+        <h3>Project Fund</h3>
+      </div>
+      <div className="container-fluid">
+        <h3>{projectTitle}</h3>
+        <div className="row">
+          <div className="col-md-6 col-6">
+            <p>Amount</p>
+            <h4>{amount}</h4>
+          </div>
+          <div className="col-md-6 col-6">
+            <p>Duration</p>
+            <h4>{duration} Month(s)</h4>
+          </div>
+          <div className="col-md-6 col-6">
+            <p>Returns(%)</p>
+            <h4>{roi}</h4>
+          </div>
+          <div className="col-md-6 col-6">
+            <p>Returns</p>
+            <h4>{newReturns}</h4>
+          </div>
+          <div className="col-md-6 col-6">
+            <p>Start Date</p>
+            <h4>{startDate.toDateString()}</h4>
+          </div>
+          <div className="col-md-6 col-6">
+            <p>End Date</p>
+            <h4>{maturityDate.format('LL')}</h4>
+          </div>
+        </div>
+      </div>
+
+      <p className="terms">Read terms and conditions</p>
+      <TermAndCondition>
+        <div className="form-group">
+          <input type="checkbox" id="switch" />
+          <label for="switch" class="slider round"></label>
+          <span>
+            I have read, understood and I agree to the terms and conditions.{" "}
+          </span>
+        </div>
+        {/* <select disabled>
+            <option value="" default>Transfer</option>
+            <option value="">Wallet</option>
+            <option value="">Card</option>
+          </select> */}
+      </TermAndCondition>
+      {/* <Button  loading={isLoading}></Button> */}
+      <button onClick={OnSubmitForm}>
+        Create Plan
+        {createFundsLoading && <Spin />}
+      </button>
+    </FirstStep>
+  );
+};
+
+const PaymentDetails = ({form,}) => {
+  const {
+    projectTitle,
+    duration,
+    roi,
+    amount,
+    startDate,
+    returns,
+  } = form || {};
+  return (
+      <FirstStep>
+        <div className="container-fluid success">
+            <p>Kindly pay ₦{amount} to the account details below</p>
+            <li>Bank Name: Sterling Bank</li>
+            <li>Account Name: Richvest360 LTD </li>
+            <li>Account Number: 0081101378 </li>
+
+            <p className='foot'>Your account will be automatically activtated upon receipt of payment </p>
+        </div>
+       
+        
+      </FirstStep>
+  )
+}
+
 export default PFModal;
