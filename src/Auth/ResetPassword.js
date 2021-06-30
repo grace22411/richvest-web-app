@@ -45,7 +45,7 @@ const ConfirmPassword = ({
       token: token,
     };
     console.log(payload);
-    confirmPasswordNew(payload);
+    confirmPasswordNew(payload, {redirect: (url) => history.replace(url)});
   };
 
     // Redirect if logged in

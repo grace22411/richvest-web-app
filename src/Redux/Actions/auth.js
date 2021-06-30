@@ -202,7 +202,7 @@ export const confirmPasswordNew = (payload,goLogPage) => async (dispatch) => {
     dispatch({ type: SPINNER, payload: false });
     dispatch(setAlert("Password changed successfully", "success"));
     console.log(res.data);
-    <Redirect to="/" />
+    goLogPage.redirect('/')
     // dispatch({
     //   type: LOGOUT,
     //   payload: res.data,
