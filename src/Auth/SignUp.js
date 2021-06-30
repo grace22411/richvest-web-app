@@ -27,7 +27,7 @@ function SignUp({setAlert, accountSetup, isAuthenticated, loading}) {
   const onSubmitForm = async(e) => {
     e.preventDefault();
     if (password.length < 8) {
-      setAlert('Minimum of 8 characters and should contain letters and numbers','error') ;
+      setAlert('Password should be minimum of 8 characters and should contain letters and numbers','error') ;
   }
     // if (NewPassword != NewPassword2) {
     //   setAlert('Password do not match', 'error');
@@ -54,7 +54,7 @@ function SignUp({setAlert, accountSetup, isAuthenticated, loading}) {
     //   return;
     // }
 
-    accountSetup(payload, {redirect: (url) => history.replace(url)});
+    accountSetup(payload);
     
   };
   if (isAuthenticated) {
