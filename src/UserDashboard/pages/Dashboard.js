@@ -30,7 +30,7 @@ function MainDashboard() {
 
   return (
     <>
-      {/* {user && ( */}
+      {user && (
         <Layout>
           <Page>
             <Title name={user.firstName} />
@@ -139,7 +139,7 @@ function MainDashboard() {
             </div>
             </Page>
         </Layout>
-      {/*)}*/}
+      )}
     </>
   );
 }
