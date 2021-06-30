@@ -54,7 +54,7 @@ function SignUp({setAlert, accountSetup, isAuthenticated, loading}) {
     //   return;
     // }
 
-    accountSetup(payload);
+    accountSetup(payload, {redirect: (url) => history.replace(url)});
     
   };
   if (isAuthenticated) {
