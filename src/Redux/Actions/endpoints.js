@@ -17,4 +17,8 @@ export const endpoints = {
   totalProjectFund: `${base_url}ProjectFund/GetTotalUserFundById`,
   GetAllProjectFunds:`${base_url}ProjectFund`,
   CreateProjectFund: `${base_url}ProjectFund`,
+
+
+  //PROFILE
+  userProfileUpdate:`${base_url}Person`
 }

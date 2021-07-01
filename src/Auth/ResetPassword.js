@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Spin } from "antd";
 import Header from "./Header";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect , useHistory} from "react-router-dom";
 import { setAlert } from "../Redux/Actions/alert";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -16,7 +16,7 @@ const ConfirmPassword = ({
   loading,
   setAlert,
 }) => {
-
+  const history = useHistory()
   const [formData, setFormData] = useState({
     token:"",
     password: "",

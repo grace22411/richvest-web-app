@@ -6,13 +6,13 @@ import SignUp from "./Auth/SignUp";
 import Alert from "../src/SharedComponents.js/globalService/Alert";
 import setAuthToken from "./features/setAuthToken";
 
-import EmailVerification from "./Auth/EmailVerification";
+import TermsAndCondition from "./UserDashboard/pages/TermsAndCondition";
 import ForgotPassword from "./Auth/ForgotPassword";
 import ConfirmPassword from "./Auth/ResetPassword";
 import Dashboard from "./UserDashboard/pages/Dashboard";
-import MiniInvestment from "./UserDashboard/pages/MiniInvestment";
-import AboutProduct from "./UserDashboard/pages/AboutProduct";
-import SourceFunding from "./UserDashboard/pages/SourceFunding";
+ import Loan from "./UserDashboard/pages/Loan";
+import Savings from "./UserDashboard/pages/Savings";
+import Wallet from "./UserDashboard/pages/Wallet";
 import { loadUserService } from "./Redux/Actions/auth";
 import store from "./Redux/store";
 import Refferal from "./UserDashboard/pages/Refferal";
@@ -55,10 +55,30 @@ function App() {
           path="/project-fund"
           component={ProjectFund}
         />
+        <Route
+          exact
+          path="/my-loan"
+          component={Loan}
+        />
+        <Route
+          exact
+          path="/my-wallet"
+          component={Wallet}
+        />
+        <Route
+          exact
+          path="/termsAndCondition"
+          component={TermsAndCondition}
+        />
+        <Route
+          exact
+          path="/my-savings"
+          component={Savings}
+        />
        
         <Route
           exact
-          path="/refferal"
+          path="/referral"
           component={Refferal}
         />
         <Route

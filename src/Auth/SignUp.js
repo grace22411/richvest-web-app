@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { Illustration, Form, Container , WelcomeImage} from "./GlobalCss";
-import {Link, Redirect} from 'react-router-dom';
+import {Link, Redirect, useHistory} from 'react-router-dom';
 import business2 from "../UserDashboard/images/business2.svg"
 import {accountSetup} from '../Redux/Actions/auth';
 import PropTypes from 'prop-types';
-import {useHistory} from "react-router-dom"
 import {connect} from 'react-redux';
 import {setAlert} from '../Redux/Actions/alert';
 import {Spin} from 'antd';
@@ -29,10 +28,6 @@ function SignUp({setAlert, accountSetup, isAuthenticated, loading}) {
     if (password.length < 8) {
       setAlert('Password should be minimum of 8 characters and should contain letters and numbers','error') ;
   }
-    // if (NewPassword != NewPassword2) {
-    //   setAlert('Password do not match', 'error');
-    //   return;
-    // }
     console.log(userDetail);
     Object.entries(userDetail).forEach((each,index) => {
       if (each[1] === '' && index !== 4) {
@@ -49,6 +44,8 @@ function SignUp({setAlert, accountSetup, isAuthenticated, loading}) {
       referralCode:referralCode
     });
    
+    // const response = await sendRegisterRequest(emailAddress, password);
+    // const responseJson = await response.json();
     // if (emailAddress < ) {
     //   setAlert(`Email Address is required`, "error");
     //   return;

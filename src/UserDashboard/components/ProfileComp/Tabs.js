@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import refer from "../../images/referandearn.svg";
 import {DropdownMenuProfile} from "../Dropdown"
+import { ProfileSetup } from "../../../Redux/Actions/profile";
 import {
   ProfileTabOne,
   ProfileTabTwo,
@@ -11,6 +12,46 @@ import {
 } from "../../styles/ComponentStyles";
 
 export const MyProfile = () => {
+
+  const [userProfile, setuserProfile] = useState({
+    emailAddress: '',
+    firstname: '',
+   lastname: '',
+    password: '',
+    phoneNumber:''
+  });
+
+  const {emailAddress, firstname, lastname, password, phoneNumber} = userProfile;
+
+  const onFormChange = (e) => {
+    setuserProfile({...userProfile, [e.target.name]: e.target.value});
+  };
+  const onSubmitForm = async(e) => {
+    e.preventDefault();
+    
+    console.log(userProfile);
+   
+
+    const payload = JSON.stringify({
+      emailAddress: emailAddress,
+      firstname: firstname,
+      lastname:lastname,
+      password: password,
+      referralCode:phoneNumber
+    });
+   
+    // const response = await sendRegisterRequest(emailAddress, password);
+    // const responseJson = await response.json();
+    // if (emailAddress < ) {
+    //   setAlert(`Email Address is required`, "error");
+    //   return;
+    // }
+
+    ProfileSetup(payload);
+    
+  };
+
+
   return (
     <ProfileTabOne>
       <div className="row">

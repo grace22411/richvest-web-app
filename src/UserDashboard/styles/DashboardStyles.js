@@ -9,6 +9,20 @@ export const Content= styled.div`
   }
 
 `
+export const ComingSoon= styled.div`
+    width:100%;
+    height:calc(100vh - 170px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    //border:1px solid red;
+    p{
+      font-size:40px;
+      color:#b0b0b0;
+    }
+`
+
 export const MobileNavIcon = styled.div`
     //display: none;
     margin-bottom: 15px;

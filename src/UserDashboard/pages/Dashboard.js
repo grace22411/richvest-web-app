@@ -17,7 +17,7 @@ import {Link }from "react-router-dom"
 
 function MainDashboard() {
   const user = JSON.parse(localStorage.getItem("user"));
-  console.log(user);
+  //console.log(user);
 
   const history = useHistory();
   useEffect(() => {

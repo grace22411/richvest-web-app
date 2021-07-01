@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setAlert } from "../../../Redux/Actions/alert";
 import { createFund } from "../../../Redux/Actions/project-fund-mgt";
 import logo from "../../images/logo.png";
+import {Link} from "react-router-dom"
 import {
-  CreateNewPlan,
   FirstStep,
   TermAndCondition,
 } from "../../styles/ProjectFundStyles";
@@ -116,7 +116,7 @@ const PFModal = ({ isModalVisible, handleCancel }) => {
                 className="form-control"
                 id="exampleInputCode1"
                 aria-describedby="CodeHelp"
-                value={roi}
+                value={roi * duration}
                 name="roi"
                 onChange={handleChange}
                 disabled
@@ -130,7 +130,7 @@ const PFModal = ({ isModalVisible, handleCancel }) => {
             <div className="text">
               <p>
                 At the end of {duration} month(s) you would have earned{" "}
-                <span>{roi}%</span> returns on{" "}
+                <span>{roi * duration}%</span> returns per month on{" "}
                 <span>{amount.toLocaleString("en-US")}</span>{" "}
               </p>
               <p style={{ fontWeight: "600" }}>Sounds Awesome!</p>
@@ -219,7 +219,7 @@ const Review = ({ form, setCurrentView }) => {
           </div>
           <div className="col-md-6 col-6">
             <p>Returns(%)</p>
-            <h4>{roi}</h4>
+            <h4>{roi * duration}</h4>
           </div>
           <div className="col-md-6 col-6">
             <p>Returns</p>
@@ -236,7 +236,7 @@ const Review = ({ form, setCurrentView }) => {
         </div>
       </div>
 
-      <p className="terms">Read terms and conditions</p>
+      <Link to="/termsAndCondition"><p className="terms">Read terms and conditions</p></Link>
       <TermAndCondition>
         <div className="form-group">
           <input type="checkbox" id="switch" />
