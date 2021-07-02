@@ -13,6 +13,7 @@ import { setAlert } from "../Redux/Actions/alert";
 
 const Login = ({ loginService, isAuthenticated, loading, setAlert }) => {
   // const [revealPasword, setRP] = useState(false);
+  const [isPasswordShown, setIsPasswordShow] = useState(false);
   const history = useHistory()
   const [formData, setFormData] = useState({
     emailAddress: "",
@@ -20,6 +21,10 @@ const Login = ({ loginService, isAuthenticated, loading, setAlert }) => {
   });
   const { emailAddress, password } = formData;
 
+  const togglePasswordVisibilty = () => {
+    setIsPasswordShow(isPasswordShown => !isPasswordShown);
+  };
+  
   const onFormChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -75,7 +80,7 @@ const Login = ({ loginService, isAuthenticated, loading, setAlert }) => {
               </div>
               <div className="form-group">
                 <input
-                  type="password"
+                  type={isPasswordShown ? "text" : "password"}
                   className="form-control"
                   id="exampleInputPassword1"
                   aria-describedby="PasswordHelp"
@@ -85,7 +90,7 @@ const Login = ({ loginService, isAuthenticated, loading, setAlert }) => {
                   onChange={onFormChange}
                   required
                 />
-
+        <i className={`far ${isPasswordShown ? 'fa-eye' : 'fa-eye-slash'}`} onClick={togglePasswordVisibilty}></i>
                 <p>
                   <Link to="/forgotPassword">Forgot Password?</Link>
                 </p>

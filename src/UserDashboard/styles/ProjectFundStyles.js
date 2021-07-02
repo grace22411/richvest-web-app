@@ -123,6 +123,11 @@ export const FirstStep = styled.div`
       margin-top: 10px;
     }
   }
+  .payment{
+    img{
+      width:130px;
+    }
+  }
   form {
     margin-top: 40px;
     text-align: left;

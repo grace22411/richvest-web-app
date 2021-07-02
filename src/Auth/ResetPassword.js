@@ -17,12 +17,19 @@ const ConfirmPassword = ({
   setAlert,
 }) => {
   const history = useHistory()
+
+  const [isPasswordShown, setIsPasswordShow] = useState(false);
   const [formData, setFormData] = useState({
     token:"",
     password: "",
     confirmPassword: "",
   });
   const { password, confirmPassword , token} = formData;
+
+
+  const togglePasswordVisibilty = () => {
+    setIsPasswordShow(isPasswordShown => !isPasswordShown);
+  };
 
   const onFormChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -74,21 +81,23 @@ const ConfirmPassword = ({
           </div>
           <div className="form-group">
             <input
-              type="password"
+              type={isPasswordShown ? "text" : "password"}
               placeholder="Enter New Password"
               name="password"
               value={password}
               onChange={(e) => onFormChange(e)}
             />
+            <i className={`far ${isPasswordShown ? 'fa-eye' : 'fa-eye-slash'}`} onClick={togglePasswordVisibilty}></i>
           </div>
           <div className="form-group">
             <input
-              type="password"
+              type={isPasswordShown ? "text" : "password"}
               placeholder="Confirm New Password"
               name="confirmPassword"
               value={confirmPassword}
               onChange={(e) => onFormChange(e)}
             />
+            <i className={`far ${isPasswordShown ? 'fa-eye' : 'fa-eye-slash'}`} onClick={togglePasswordVisibilty}></i>
           </div>
           <Link to="/">
             <button onClick={onSubmitForm} disabled={loading}>

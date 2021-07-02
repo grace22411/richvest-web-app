@@ -11,6 +11,7 @@ import Header from "./Header";
 
 function SignUp({setAlert, accountSetup, isAuthenticated, loading}) {
   const history = useHistory()
+  const [isPasswordShown, setIsPasswordShow] = useState(false);
   const [userDetail, setuserDetail] = useState({
     emailAddress: '',
     firstname: '',
@@ -20,6 +21,9 @@ function SignUp({setAlert, accountSetup, isAuthenticated, loading}) {
   });
   const {emailAddress, firstname, lastname, password, referralCode} = userDetail;
 
+  const togglePasswordVisibilty = () => {
+    setIsPasswordShow(isPasswordShown => !isPasswordShown);
+  };
   const onFormChange = (e) => {
     setuserDetail({...userDetail, [e.target.name]: e.target.value});
   };
@@ -68,7 +72,6 @@ function SignUp({setAlert, accountSetup, isAuthenticated, loading}) {
   //     return <Redirect to="/dashboard" />;
   //   }
   // }
-
 
   return (
     <div>
@@ -123,7 +126,7 @@ function SignUp({setAlert, accountSetup, isAuthenticated, loading}) {
               </div>
               <div className="form-group">
                 <input
-                  type="password"
+                  type={isPasswordShown ? "text" : "password"}
                   className="form-control"
                   id="exampleInputPassword1"
                   aria-describedby="PasswordHelp"
@@ -133,7 +136,7 @@ function SignUp({setAlert, accountSetup, isAuthenticated, loading}) {
 
                 onChange={onFormChange}
                 />
-                
+                <i className={`far ${isPasswordShown ? 'fa-eye' : 'fa-eye-slash'}`} onClick={togglePasswordVisibilty}></i>
               </div>
               <div className="form-group">
                 <input

@@ -49,10 +49,19 @@ export const Form = styled.form`
       border-radius:10px;
       padding-left:15px;
       outline: none !important;
+      //position: relative;
       ::placeholder {
         font-size: 11px;
         color: #32427c;
       }
+    }
+    .far{
+      float:right;
+      margin-top:-23px;
+      margin-right: 15px;;
+      font-size:12px;
+      color:#5783E6;
+      z-index:2;
     }
     p{
       text-align:right;

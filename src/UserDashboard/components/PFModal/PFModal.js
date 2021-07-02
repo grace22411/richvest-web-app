@@ -9,6 +9,7 @@ import {
   FirstStep,
   TermAndCondition,
 } from "../../styles/ProjectFundStyles";
+import payment from "../../images/payment.svg"
 import moment from "moment";
 
 import projuctFundReducer from "../../../Redux/Reducers/project-fund-mgt";
@@ -16,6 +17,7 @@ import projuctFundReducer from "../../../Redux/Reducers/project-fund-mgt";
 const PFModal = ({ isModalVisible, handleCancel }) => {
   const dispatch = useDispatch();
   const [currentView, setCurrentView] = useState("form");
+ 
   const [form, setForm] = useState({
     duration: 4,
     amount: 0,
@@ -200,6 +202,19 @@ const Review = ({ form, setCurrentView }) => {
     await dispatch(createFund(payload));
   };
 
+  const [isChecked, setIsChecked] = useState(false)
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (isChecked === true) {
+      OnSubmitForm(e)
+  }else{
+    dispatch(setAlert('You must agree to terms and condition', 'error'))
+  }
+  }
+  
+
+
   return (
     <FirstStep>
       <div className="title">
@@ -239,7 +254,7 @@ const Review = ({ form, setCurrentView }) => {
       <Link to="/termsAndCondition"><p className="terms">Read terms and conditions</p></Link>
       <TermAndCondition>
         <div className="form-group">
-          <input type="checkbox" id="switch" />
+          <input type="checkbox" id="switch" checked={isChecked} onChange={(e) => setIsChecked(e.target.checked)}/>
           <label for="switch" class="slider round"></label>
           <span>
             I have read, understood and I agree to the terms and conditions.{" "}
@@ -252,7 +267,7 @@ const Review = ({ form, setCurrentView }) => {
           </select> */}
       </TermAndCondition>
       {/* <Button  loading={isLoading}></Button> */}
-      <button onClick={OnSubmitForm}>
+      <button onClick={handleSubmit}>
         Create Plan
         {createFundsLoading && <Spin />}
       </button>
@@ -271,6 +286,9 @@ const PaymentDetails = ({form,}) => {
   } = form || {};
   return (
       <FirstStep>
+        <div className="payment">
+        <img src={payment} alt="richvest logo" />
+      </div>
         <div className="container-fluid success">
             <p>Kindly pay ₦{amount} to the account details below</p>
             <li>Bank Name: Sterling Bank</li>
