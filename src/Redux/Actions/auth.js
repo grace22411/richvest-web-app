@@ -20,7 +20,7 @@ import userEvent from "@testing-library/user-event";
 
 const token = localStorage.getItem("token");
 const user = localStorage.getItem("user");
-export const base_url = "https://www.richvest.gq/";
+export const base_url = "https://richvest360.ga/";
 
 // load user
 export const loadUserService = () => async (dispatch) => {
@@ -70,8 +70,8 @@ export const loginService = (payload,logPage) => async (dispatch) => {
             //console.log(user);
 
         } catch(err) {
-            console.log(err.response.data)
-            dispatch(setAlert(err.response.data, 'error'))
+            console.log(err.response)
+            dispatch(setAlert(err.response, 'error'))
             if (
                 err.message === "Network Error" ||
                 err.message === "timeout of 0ms exceeded"

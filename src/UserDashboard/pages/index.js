@@ -1,0 +1,9 @@
+export {default as Dashboard} from './UserDashboard'
+export {default as Wallet} from './Wallet'
+export {default as ProjectFund} from './ProjectFund'
+export {default as Savings} from './Savings'
+export {default as Profile} from './Profile'
+export {default as Loan} from './Loan'
+export {default as Refferal} from "./Refferal"
+export {default as TermsAndCondition} from "./TermsAndCondition"
+export {default as VerifyEmailPage} from "./VerifyEmailPage"

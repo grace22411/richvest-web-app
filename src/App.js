@@ -21,6 +21,8 @@ import "antd/dist/antd.css";
 import { Provider } from "react-redux";
 import ProjectFund from "./UserDashboard/pages/ProjectFund";
 import VerifyEmailPage from "./UserDashboard/pages/VerifyEmailPage";
+import AdminDashboard from "./Admin/pages/AdminDashboard";
+import ProjectFundAdmin from "./Admin/pages/ProjectFundAdmin";
 
 if (localStorage.user) {
   setAuthToken(localStorage.user);
@@ -35,7 +37,6 @@ function App() {
     <Alert />
       <BrowserRouter>
         <Switch>
-
       
           <Route exact path="/" component={Login} />
           <Route exact path="/signup" component={SignUp} />
@@ -86,27 +87,19 @@ function App() {
           path="/profile"
           component={Profile}
         />
-        {/* <PrivateRoute exact path="/investment" component={Investment} /> */}
-        {/* <Route
+
+
+        {/* Admin Dashboard */}
+        <Route
           exact
-          path="/investment"
-          render={({ match: { url } }) => (
-            <>
-              <Switch>
-                <Router
-                  path={`${url}/`}
-                  component={Investment}
-                  exact
-                />
-                <Router
-                  path={`${url}/mini-investment`}
-                  component={MiniInvestment}
-                  exact
-                />
-              </Switch>
-            </>
-          )}
-        /> */}
+          path="/admin/dashboard"
+          component={AdminDashboard}
+        />
+        <Route
+          exact
+          path="/admin/project-fund"
+          component={ProjectFundAdmin}
+        />
         </Switch>
       </BrowserRouter>
     </>

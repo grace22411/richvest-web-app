@@ -1,17 +1,14 @@
 import React from "react";
-import Header from "../components/Header";
-import SideBar from "../components/SideBar";
 import {
-  DashboardContainer,
   TabContainer,
   ReferralContainer,
   Page,
 } from "../styles/DashboardStyles";
 import { Tabs } from "antd";
 import {
-  MyProfile,
   NextOfKin,
   BankDetails,
+  MyProfile
 } from "../components/ProfileComp/Tabs";
 import Layout from "../components/Layout";
 
@@ -30,7 +27,7 @@ const Profile = () => {
             <ReferralContainer>
               <Tabs defaultActiveKey="1" onChange={callback}>
                 <TabPane tab="My Profile" key="1">
-                  <MyProfile />
+                  <MyProfile  />
                 </TabPane>
                 <TabPane tab="Next of Kin" key="2">
                   <NextOfKin />

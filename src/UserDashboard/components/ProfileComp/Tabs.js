@@ -1,45 +1,44 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import refer from "../../images/referandearn.svg";
-import {DropdownMenuProfile} from "../Dropdown"
+import { DropdownMenuProfile } from "../Dropdown";
 import { ProfileSetup } from "../../../Redux/Actions/profile";
 import {
   ProfileTabOne,
   ProfileTabTwo,
   ProfileTabThree,
   Form,
-  PictureContainerProfile
+  PictureContainerProfile,
 } from "../../styles/ComponentStyles";
 
 export const MyProfile = () => {
-
   const [userProfile, setuserProfile] = useState({
-    emailAddress: '',
-    firstname: '',
-   lastname: '',
-    password: '',
-    phoneNumber:''
+    emailAddress: "",
+    firstname: "",
+    lastname: "",
+    password: "",
+    phoneNumber: "",
   });
 
-  const {emailAddress, firstname, lastname, password, phoneNumber} = userProfile;
+  const { emailAddress, firstname, lastname, password, phoneNumber } =
+    userProfile || {};
 
   const onFormChange = (e) => {
-    setuserProfile({...userProfile, [e.target.name]: e.target.value});
+    setuserProfile({ ...userProfile, [e.target.name]: e.target.value });
   };
-  const onSubmitForm = async(e) => {
+  const onSubmitForm = async (e) => {
     e.preventDefault();
-    
+
     console.log(userProfile);
-   
 
     const payload = JSON.stringify({
       emailAddress: emailAddress,
       firstname: firstname,
-      lastname:lastname,
+      lastname: lastname,
       password: password,
-      referralCode:phoneNumber
+      referralCode: phoneNumber,
     });
-   
+
     // const response = await sendRegisterRequest(emailAddress, password);
     // const responseJson = await response.json();
     // if (emailAddress < ) {
@@ -48,9 +47,7 @@ export const MyProfile = () => {
     // }
 
     ProfileSetup(payload);
-    
   };
-
 
   return (
     <ProfileTabOne>
@@ -75,6 +72,8 @@ export const MyProfile = () => {
                 id="exampleInputFirstName"
                 aria-describedby="firstNameHelp"
                 placeholder="First Name"
+                value={firstname}
+                onChange={onFormChange}
               />
             </div>
             <div className="form-group">
@@ -84,6 +83,8 @@ export const MyProfile = () => {
                 id="exampleInputLastName"
                 aria-describedby="lastNameHelp"
                 placeholder="Last Name"
+                value={lastname}
+                onChange={onFormChange}
               />
             </div>
 
@@ -94,6 +95,8 @@ export const MyProfile = () => {
                 id="exampleInputEmail1"
                 aria-describedby="EmailHelp"
                 placeholder="Email Address"
+                value={emailAddress}
+                onChange={onFormChange}
               />
             </div>
             <div className="form-group">
@@ -103,6 +106,8 @@ export const MyProfile = () => {
                 id="exampleInputPhoneNumber1"
                 aria-describedby="PhoneNumberHelp"
                 placeholder="Phone Number"
+                value={phoneNumber}
+                onChange={onFormChange}
               />
             </div>
             <div className="form-group">
@@ -112,9 +117,13 @@ export const MyProfile = () => {
                 id="exampleInputPassword"
                 aria-describedby="PasswordHelp"
                 placeholder="Password"
+                value={password}
+                onChange={onFormChange}
               />
             </div>
-            <button className="btn">Update</button>
+            <button className="btn" onClick={onSubmitForm}>
+              Update
+            </button>
           </Form>
         </div>
       </div>

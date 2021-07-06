@@ -1,10 +1,10 @@
 import React, {useState} from "react";
-import { Content, MobileNavIcon } from "../styles/DashboardStyles";
+import { Content, MobileNavIcon } from "../../UserDashboard/styles/DashboardStyles";
 import Header from "../components/Header";
 import {Link} from 'react-router-dom'
 import {SideBar} from "./SideBar";
-import hamburger from "../images/Closed.svg"
-import {MobileSideMenu, Nav, NavItem} from "../styles/ComponentStyles";
+import hamburger from "../../UserDashboard/images/Closed.svg"
+import {MobileSideMenu, Nav, NavItem} from "../../UserDashboard/styles/ComponentStyles";
 import { SidebarData } from "../data/SideBarData";
 
 const Layout = ({ children }) => {

@@ -4,7 +4,7 @@ import {
   SPINNER,
   CREATE_PROFILE_SUCCESS,
   CREATE_PROFILE_FAILED,
-  CREATE_FUND_FAILED
+  CREATE_PROFILE_PENDING,
 } from "./types";
 import { setAlert, setAlertConfirm } from "./alert";
 import { Link, Redirect } from "react-router-dom";
@@ -16,7 +16,7 @@ import userEvent from "@testing-library/user-event";
 
 const token = localStorage.getItem("token");
 const user = localStorage.getItem("user");
-export const base_url = "https://www.richvest.gq/";
+export const base_url = "https://richvest360.ga/";
 
 // load user
 export const loadUserService = () => async (dispatch) => {
@@ -76,13 +76,13 @@ export const ProfileSetup = (payload) => async (dispatch) => {
         dispatch({ type: SPINNER, payload: false });
         dispatch(handleGeneralErrors(err.message));
         dispatch({
-          type: CREATE_FUND_FAILED,
+          type: CREATE_PROFILE_FAILED,
         });
       } else {
         dispatch({ type: SPINNER, payload: false });
         dispatch(handleGeneralErrors(err));
         dispatch({
-          type: CREATE_FUND_FAILED,
+          type: CREATE_PROFILE_FAILED,
         });
         console.log(err);
       }

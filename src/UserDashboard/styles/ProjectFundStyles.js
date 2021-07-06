@@ -95,7 +95,7 @@ export const TotalFundEntry = styled.div`
     width: 100%;
     background-color: #f4f8fe48;
   }
-  .table-space:nth-child(2) {
+  .table-space:nth-child(2n) {
     background-color: #f1f5ff;
   }
   @media only screen and (min-width: 321px) and (max-width: 600px) {

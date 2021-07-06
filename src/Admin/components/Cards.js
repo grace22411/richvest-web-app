@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components"
-import wave from "../images/wavybackground.svg"
+import wave from "../../UserDashboard/images/wavybackground.svg"
 
 
 const Card = styled.div`
@@ -39,18 +39,6 @@ const Card = styled.div`
      
    }
 `
-
-
-export const DashboardCard = ({title, value, colorOne, colorTwo}) => {
-  return (
-    <>
-    <Card className="cards" style={{background:`linear-gradient(${colorOne},${colorTwo})`}}>
-      <h3>{title}</h3>
-      <img src={wave} alt="" />
-    </Card>
-    </>
-  );
-};
 
 export const AdminDashboardCard = ({title, value, colorOne, colorTwo}) => {
   return (

@@ -1,4 +1,4 @@
-export const base_url = "https://www.richvest.gq/";
+export const base_url = "https://richvest360.ga/";
 // export const base_url = "https://localhost:44393/";
 
 export const endpoints = {
